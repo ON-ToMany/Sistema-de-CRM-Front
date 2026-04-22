@@ -1,20 +1,49 @@
-import { useState } from "react"
+import {useContext, useEffect, useState, type ChangeEvent, type SyntheticEvent } from "react"
 import { Login } from "../../services/Service"
-import type UsuarioLogin from "../../models/UsuárioLogin"
+import type UsuarioLogin from "../../models/UsuarioLogin"
+import { AuthContext } from "../../contexts/AuthContext"
+import { ToastAlerta } from '../../utils/ToastAlerta'
+import { useNavigate } from "react-router-dom"
 
 export default function LoginUsuario() {
 
-const[usuario,setUsuario]= useState<UsuarioLogin>({} as UsuarioLogin)
+const[usuarioLogin,setUsuarioLogin]= useState<UsuarioLogin>({} as UsuarioLogin)
 const[isloading,setIsloading]=useState<boolean>(false)
+  const { usuario, handleLogin } = useContext(AuthContext);
 
-async function logar (){
+  const atualizarEstado = (e: ChangeEvent<HTMLInputElement>) => {
+    setUsuarioLogin({ ...usuario, [e.target.name]: e.target.value })
+  }
+const navigate = useNavigate()
+
+
+
+
+  useEffect(() => {
+    if (usuario.token !== '') {
+      navigate("/Login");
+    }
+  }, [usuario, navigate]);
+
+
+
+
+async function logar (e: SyntheticEvent<HTMLFormElement>){
+      e.preventDefault();
+    setIsloading(true);
 try {
-setIsloading(true)
-await Login("/auth/login",usuario,setUsuario)
+
+await handleLogin(usuarioLogin)
+ToastAlerta("usuario autenticado com sucesso!",'Sucess')
 
 } catch (error:any) {
+  if(error)
     console.error(error)
+  ToastAlerta("dados de usuario inconsistentes!",'error')
+}finally{
+  setIsloading(false)
 }
+
 }
 
 
