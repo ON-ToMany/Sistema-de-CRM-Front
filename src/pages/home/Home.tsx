@@ -145,7 +145,6 @@ function Home() {
             {/* ── NOSSO SISTEMA ── */}
             <section className="bg-gray-100 py-16 sm:py-20">
                 <div className="max-w-6xl mx-auto px-6">
-                    {/* Badge + Título */}
                     <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
                         <span className="bg-green-900 text-white text-xs font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
                             Principais Recursos
