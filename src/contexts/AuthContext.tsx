@@ -3,8 +3,8 @@ import type UsuarioLogin from "../models/UsuarioLogin";
 import { ToastAlerta } from "../utils/ToastAlerta"; 
 import { Login } from "../services/Service";
 
-interface AuthContextProps {
-  usuario: UsuarioLogin
+  interface AuthContextProps {
+    usuario: UsuarioLogin
   handleLogout(): void
   handleLogin(usuario: UsuarioLogin): Promise<void>
   isLoading: boolean
