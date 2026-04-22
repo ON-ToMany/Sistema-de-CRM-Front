@@ -1,7 +1,9 @@
 import axios from "axios";
 
 
-const api = axios.create({baseURL:'https://greentech-sistema-de-crm.onrender.com/swagger'})
+const api = axios.create({
+  baseURL: 'https://greentech-sistema-de-crm.onrender.com/'
+})
 
 
 
@@ -9,7 +11,7 @@ export const cadastrarUsuario = async(url:string,dados:object,setDados:Function)
     const resposta = await api.post(url,dados)
     setDados(resposta.data)
 }
-export const usuario = async(url:string,dados:object,setDados:Function)=>{
+export const Login = async(url:string,dados:object,setDados:Function)=>{
 const resposta = await api.post(url,dados)
 setDados(resposta.data)
 
@@ -35,6 +37,6 @@ setDados(resposta.data)
 
 }
 
-export const deletar = async(url:string,dados:object)=>{
-     await api.delete(url,dados)
+export const deletar = async(url: string, header: object) => {
+    await api.delete(url, header)
 }
