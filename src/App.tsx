@@ -1,11 +1,4 @@
-
-import "./App.css";
-
-
-
 import Quemsomos from "./pages/quemsomos/Quemsomos";
-
-
 
 function App() {
   return (
