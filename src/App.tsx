@@ -1,15 +1,17 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Quemsomos from "./pages/quemsomos/Quemsomos";
 
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <BrowserRouter>
 
-      {/* <Navbar /> */}
-      <Quemsomos />
+      <div className="flex flex-col min-h-screen">
+        <Routes>
+          <Route path="/quem-somos" element={<Quemsomos />} />
+        </Routes>
+      </div>
 
-
-      {/* <Footer /> */}
-    </div>
+    </BrowserRouter>
   );
 }
 
