@@ -117,10 +117,10 @@ export default function AboutUs() {
               <div className="flex flex-col md:flex-row gap-8 items-start">
                 <div className="w-44 h-48 shrink-0 rounded-sm overflow-hidden shadow-md">
                   <img
-                    /* CORREÇÃO: Usando a variável imageUrl de cada membro */
+                    
                     src={member.imageUrl}
                     alt={member.name}
-                    /* REMOVIDO: grayscale e hover:grayscale-0 */
+                   
                     className="w-full h-full object-cover"
                   />
                 </div>
