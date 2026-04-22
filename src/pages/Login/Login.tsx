@@ -21,7 +21,7 @@ const navigate = useNavigate()
 
   useEffect(() => {
     if (usuario.token !== '') {
-      navigate("/Login");
+      navigate("/login");
     }
   }, [usuario, navigate]);
 
@@ -34,12 +34,12 @@ async function logar (e: SyntheticEvent<HTMLFormElement>){
 try {
 
 await handleLogin(usuarioLogin)
-ToastAlerta("usuario autenticado com sucesso!",'Sucess')
+
 
 } catch (error:any) {
   if(error)
     console.error(error)
-  ToastAlerta("dados de usuario inconsistentes!",'error')
+
 }finally{
   setIsloading(false)
 }
