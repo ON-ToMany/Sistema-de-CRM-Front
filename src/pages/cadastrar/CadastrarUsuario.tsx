@@ -77,9 +77,9 @@ export default function CadastrarUsuario() {
         <div className="flex flex-col">
           <label htmlFor="nome" className='text-[#0D542B] font-bold mb-1 ml-2'>Nome</label>
           <input 
-          
             type="text" 
             name="nome"
+            placeholder='Digite seu nome completo'
             value={usuario.nome} 
             className=' bg-white w-full h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
             onChange={atualizarEstado}
@@ -92,6 +92,7 @@ export default function CadastrarUsuario() {
           <input 
             type="text" 
             name="cpf"
+            placeholder='Digite seu CPF'
             value={usuario.cpf} 
             className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
             onChange={atualizarEstado}
@@ -118,7 +119,8 @@ export default function CadastrarUsuario() {
           <label htmlFor="usuario" className='text-[#0D542B] font-bold mb-1 ml-2'>Email</label>
           <input 
             type="email" 
-            name="usuario" 
+            name="usuario"
+            placeholder='Digite seu email' 
             className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
             value={usuario.usuario} 
             onChange={atualizarEstado}
@@ -131,6 +133,7 @@ export default function CadastrarUsuario() {
           <input 
             type="password" 
             name="senha"
+            placeholder='Digite uma senha'
             value={usuario.senha} 
             className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
             onChange={atualizarEstado}
@@ -143,6 +146,7 @@ export default function CadastrarUsuario() {
           <input 
             type="password" 
             name="confirmarSenha"
+            placeholder='Confirme a senha digitada'
             value={confirmarSenha} 
             className='w-full h-10  bg-white rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
             onChange={handleSenha}
