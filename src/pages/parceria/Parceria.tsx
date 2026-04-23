@@ -82,6 +82,18 @@ function Parceria() {
       logo: "https://ik.imagekit.io/9yqf3fqpw/cedae.jpg",
       descricao: "Sustentabilidade no tratamento e descarte.",
     },
+    {
+      nome: "Prudential",
+      categoria: "Finanças",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/prudential.jpg",
+      descricao: "Sustentabilidade no tratamento e descarte.",
+    },
+    {
+      nome: "Generation",
+      categoria: "Educação",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/generation.png",
+      descricao: "Sustentabilidade no tratamento e descarte.",
+    },
   ];
 
   return (
@@ -91,7 +103,7 @@ function Parceria() {
         Nossos Parceiros
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
         
         {parceiros.map((empresa, i) => (
           <div
@@ -110,7 +122,7 @@ function Parceria() {
               }}
             >
               
-              {/* NA FRENTE */}
+
               <div
                 className="absolute w-full h-full rounded-2xl border border-green-950 bg-white flex flex-col items-center justify-center gap-3 p-5"
                 style={{ backfaceVisibility: "hidden" }}
@@ -121,24 +133,24 @@ function Parceria() {
                   className="h-12 object-contain"
                 />
 
-                <span className="px-3 py-1 text-xs rounded-full bg-green-100 text-green-800">
+                <span className="px-3 py-1 text-md rounded-full bg-green-100 text-green-800">
                   {empresa.categoria}
                 </span>
 
-                <h3 className="font-semibold text-gray-950 text-center">
+                <h3 className="font-bold text-gray-950 text-center">
                   {empresa.nome}
                 </h3>
               </div>
 
            
               <div
-                className="absolute w-full h-full rounded-2xl border border-green-950 bg-lime-100 flex items-center justify-center p-4 text-center"
+                className="absolute w-full h-full rounded-2xl border border-green-950 bg-green-100 flex items-center justify-center p-4 text-center"
                 style={{
                   backfaceVisibility: "hidden",
                   transform: "rotateY(180deg)",
                 }}
               >
-                <p className="text-sm text-gray-950">
+                <p className="text-md text-gray-950">
                   {empresa.descricao}
                 </p>
               </div>
