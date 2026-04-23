@@ -10,7 +10,7 @@ interface ImpactCardsProps {
 const ImpactCards: React.FC<ImpactCardsProps> = ({ co2, reciclados, reusos }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-      <div className="bg-[#DCE4E0] rounded-[40px] p-8 border border-[#0D542B] flex flex-col items-center text-center">
+      <div className="w-full h-auto bg-[#DCE4E0] rounded-[40px] p-8 border border-[#0D542B] flex flex-col items-center text-center">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Leaf className="text-[#0D542B] w-8 h-8" strokeWidth={2.5} />
           <div className="text-[#0D542B] text-2xl font-bold">
@@ -22,7 +22,7 @@ const ImpactCards: React.FC<ImpactCardsProps> = ({ co2, reciclados, reusos }) =>
         </div>
       </div>
 
-      <div className="bg-[#DCE4E0] rounded-[40px] p-8 border border-[#0D542B] flex flex-col items-center text-center">
+      <div className="w-full h-auto bg-[#DCE4E0] rounded-[40px] p-8 border border-[#0D542B] flex flex-col items-center text-center">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Recycle className="text-[#0D542B] w-8 h-8" strokeWidth={2.5} />
           <div className="text-[#0D542B] text-2xl font-bold">
@@ -35,7 +35,7 @@ const ImpactCards: React.FC<ImpactCardsProps> = ({ co2, reciclados, reusos }) =>
         <div className="text-2xl font-normal text-[#1F2937] mt-1">Equipamentos</div>
       </div>
 
-      <div className="bg-[#DCE4E0] rounded-[40px] p-8 border border-[#0D542B] flex flex-col items-center text-center">
+      <div className="w-full h-auto bg-[#DCE4E0] rounded-[40px] p-8 border border-[#0D542B] flex flex-col items-center text-center">
         <div className="flex items-center justify-center gap-2 mb-4">
           <Recycle className="text-[#0D542B] w-8 h-8" strokeWidth={2.5} />
           <div className="text-[#0D542B] text-2xl font-bold">
