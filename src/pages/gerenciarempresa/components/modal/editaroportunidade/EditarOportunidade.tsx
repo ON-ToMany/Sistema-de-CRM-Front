@@ -75,6 +75,7 @@ export function EditarOportunidadeModal({
             <input
               type="text"
               name="nomeEquipamento"
+              placeholder="Digite o nome do Equipamento"
               value={form.nomeEquipamento}
               onChange={handleChange}
               className="rounded-full bg-white/70 border border-gray-800 outline-none px-4 py-2 text-sm text-gray-800 focus:ring-2 focus:ring-green-950/40"
