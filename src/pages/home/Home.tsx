@@ -2,31 +2,32 @@ import { Link } from "react-router-dom";
 import demoImg from "../../assets/img/demo.png";
 
 import {
-    RiAlertLine,
-    RiEyeLine,
-    RiLeafLine,
-    RiLineChartLine,
+  RiAlertLine,
+  RiEyeLine,
+  RiLeafLine,
+  RiLineChartLine,
 } from "react-icons/ri";
+import Coleta from "./coleta/Coleta";
 
 const stats = [
-    {
-        value: "+2,4M",
-        label: "toneladas/ano",
-        bg: "bg-green-400",
-        text: "text-green-900",
-    },
-    {
-        value: "3%",
-        label: "reciclado corretamente",
-        bg: "bg-yellow-300",
-        text: "text-yellow-900",
-    },
-    {
-        value: "95%",
-        label: "descarte incorreto",
-        bg: "bg-red-400",
-        text: "text-red-900",
-    },
+  {
+    value: "+2,4M",
+    label: "toneladas/ano",
+    bg: "bg-green-400",
+    text: "text-green-900",
+  },
+  {
+    value: "3%",
+    label: "reciclado corretamente",
+    bg: "bg-yellow-300",
+    text: "text-yellow-900",
+  },
+  {
+    value: "95%",
+    label: "descarte incorreto",
+    bg: "bg-red-400",
+    text: "text-red-900",
+  },
 ];
 
 // const features = [
@@ -89,58 +90,57 @@ function Home() {
                         </p>
                     </div>
 
-                    <div className="flex-1 relative flex justify-end">
-                        <div className="absolute top-0 right-10 z-10 max-w-95">
-                            <div className="relative bg-[#BFD8C3] border border-green-900 rounded-[30px] shadow-sm text-gray-800 text-sm px-6 py-4 flex items-start gap-3">
-                                <RiAlertLine className="text-gray-700 text-xl shrink-0 mt-1" />
+          <div className="flex-1 relative flex justify-end">
+            <div className="absolute top-0 right-10 z-10 max-w-95">
+              <div className="relative bg-[#BFD8C3] border border-green-900 rounded-[30px] shadow-sm text-gray-800 text-sm px-6 py-4 flex items-start gap-3">
+                <RiAlertLine className="text-gray-700 text-xl shrink-0 mt-1" />
 
-                                <span className="leading-snug">
-                                    Todo esse e-lixo também contribui para milhões de toneladas de
-                                    CO₂ na atmosfera.
-                                </span>
+                <span className="leading-snug">
+                  Todo esse e-lixo também contribui para milhões de toneladas de
+                  CO₂ na atmosfera.
+                </span>
 
-                                <div className="absolute -bottom-2 right-12 w-4 h-4 bg-[#BFD8C3] border-b border-r border-green-900 rotate-45"></div>
-                            </div>
-                        </div>
+                <div className="absolute -bottom-2 right-12 w-4 h-4 bg-[#BFD8C3] border-b border-r border-green-900 rotate-45"></div>
+              </div>
+            </div>
 
-                        <div className="w-full mt-14 sm:mt-16">
-                            <img
-                                src="https://ik.imagekit.io/9yqf3fqpw/lixo-eletronico.png"
-                                alt="Lixo eletrônico"
-                                className="w-full object-contain"
-                            />
-                        </div>
-                    </div>
+            <div className="w-full mt-14 sm:mt-16">
+              <img
+                src="https://ik.imagekit.io/9yqf3fqpw/lixo-eletronico.png"
+                alt="Lixo eletrônico"
+                className="w-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-gray-200 py-16 sm:py-20">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12 sm:mb-16">
+            Dados que impulsionam nossa{" "}
+            <span className="text-green-700">missão verde!</span>
+          </h2>
+
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-10">
+            {stats.map((s) => (
+              <div
+                key={s.label}
+                className="flex flex-col items-center gap-3 w-full sm:w-auto"
+              >
+                <div
+                  className={`${s.bg} ${s.text} text-4xl sm:text-5xl md:text-6xl font-extrabold px-10 py-5 rounded-full w-full sm:min-w-50 text-center`}
+                >
+                  {s.value}
                 </div>
-            </section>
-
-            <section className="bg-gray-200 py-16 sm:py-20">
-                <div className="max-w-6xl mx-auto px-6 text-center">
-                    <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12 sm:mb-16">
-                        Dados que impulsionam nossa{" "}
-                        <span className="text-green-700">missão verde!</span>
-                    </h2>
-
-                    <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-10">
-                        {stats.map((s) => (
-                            <div
-                                key={s.label}
-                                className="flex flex-col items-center gap-3 w-full sm:w-auto"
-                            >
-                                <div
-                                    className={`${s.bg} ${s.text} text-4xl sm:text-5xl md:text-6xl font-extrabold px-10 py-5 rounded-full w-full sm:min-w-50 text-center`}
-                                >
-                                    {s.value}
-                                </div>
-                                <span className="text-sm sm:text-base text-gray-700">
-                                    {s.label}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
+                <span className="text-sm sm:text-base text-gray-700">
+                  {s.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
      
             <section className="bg-gray-100 py-16 sm:py-20">
                 <div className="max-w-6xl mx-auto px-6">
@@ -154,15 +154,14 @@ function Home() {
                         </h2>
                     </div>
 
-                    <div className="flex flex-col md:flex-row gap-6 md:items-stretch">
-                        <div className="md:w-[55%] rounded-2xl overflow-hidden shrink-0 flex items-center">
-                            <img
-                                src={demoImg}
-                                alt="Demo do sistema"
-                                className="w-full h-auto object-contain"
-                            />
-                        </div>
-
+          <div className="flex flex-col md:flex-row gap-6 md:items-stretch">
+            <div className="md:w-[55%] rounded-2xl overflow-hidden shrink-0 flex items-center">
+              <img
+                src={demoImg}
+                alt="Demo do sistema"
+                className="w-full h-auto object-contain"
+              />
+            </div>
                         <div className="flex flex-col gap-4 flex-1">
                             {[
                                 {
@@ -202,9 +201,14 @@ function Home() {
                         </div>
                     </div>
                 </div>
-            </section>
+              ))}
+            </div>
+          </div>
         </div>
-    );
+      </section>
+      <Coleta />
+    </div>
+  );
 }
 
 export default Home;
