@@ -1,4 +1,4 @@
-import React, { useContext, useState, type ChangeEvent, type FormEvent } from 'react'
+import { useContext, useState, type ChangeEvent, type SyntheticEvent, } from 'react'
 import type { Oportunidade } from '../../models/Oportunidade'
 import { ClipLoader } from 'react-spinners'
 import { cadastrar } from '../../services/Service'
@@ -14,7 +14,7 @@ export default function CardOportunidade() {
     setOportunidade({ ...oportunidade, [e.target.name]: e.target.value })
   }
 
-  async function cadastrarOportunidade(e: FormEvent<HTMLFormElement>) {
+  async function cadastrarOportunidade(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault() 
     
 
@@ -60,6 +60,7 @@ export default function CardOportunidade() {
               <input
                 type="text"
                 name="equipamento" 
+                placeholder='Digite o nome do equipamento'
                 value={oportunidade.equipamento || ''}
                 className='bg-white w-full h-11 rounded-full px-5 outline-none focus:ring-2 focus:ring-[#0D542B]'
                 onChange={atualizarEstado}
@@ -73,6 +74,7 @@ export default function CardOportunidade() {
               <input
                 type="text"
                 name="peso" 
+                placeholder='Digite o peso do equipamento'
                 value={oportunidade.peso || ''}
                 className='bg-white w-full h-11 rounded-full px-5 outline-none focus:ring-2 focus:ring-[#0D542B]'
                 onChange={atualizarEstado}
@@ -85,6 +87,7 @@ export default function CardOportunidade() {
               <input
                 type="text"
                 name="valorConservacao" 
+                placeholder='Digite o valor da conservação (1 a 10)'
                 value={oportunidade.valorConservacao || ''}
                 className='bg-white w-full h-11 rounded-full px-5 outline-none focus:ring-2 focus:ring-[#0D542B]'
                 onChange={atualizarEstado}

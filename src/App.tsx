@@ -28,7 +28,7 @@ function App() {
               <Route path="/Parceria" element={<Parceria />} />
               <Route path="/Sobre" element={<Quemsomos />} />
               <Route path="/Login" element={<LoginUsuario />}/>
-              <Route path="/cadatrar" element={<CadastrarUsuario/>}  />
+              <Route path="/cadastrar" element={<CadastrarUsuario/>} />
               <Route path="/" element={<CardOportunidade/>} />
               <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
             </Routes>

@@ -51,7 +51,7 @@ return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#EAECEE]">
       
 
-      <p className="font-bold text-center text-gray-800 max-w-[400px] mb-6 text-[18px] leading-tight">
+      <p className="font-bold text-center text-gray-800 max-w-100px mb-6 text-[18px] leading-tight">
         Acesse sua conta para acompanhar ou gerenciar o processo de descarte de seu equipamento.
       </p>
 
@@ -65,7 +65,8 @@ return (
           <input 
             type="text" 
             id="usuario"
-            name="usuario" 
+            name="usuario"
+            placeholder="Digite seu email" 
             value={usuarioLogin.usuario}
             className="w-full h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B] bg-white" 
              onChange={(e:ChangeEvent<HTMLInputElement>)=>atualizarEstado(e)} 
@@ -79,6 +80,7 @@ return (
             type="password" 
             id="senha"
             name="senha"
+            placeholder="Digite sua senha"
             value={usuarioLogin.senha}
             className="w-full h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B] bg-white"
             onChange={(e:ChangeEvent<HTMLInputElement>)=>atualizarEstado(e)} 
@@ -96,7 +98,7 @@ return (
       </form>
 
       <p className="mt-6 font-medium text-black">
-        Não possui conta? <Link to="/Cadastro" className="text-[#0D542B] font-bold hover:underline">Cadastre-se aqui</Link>
+        Não possui conta? <Link to="/cadastrar" className="text-[#0D542B] font-bold hover:underline">Cadastre-se aqui</Link>
       </p>
 
     </div>
