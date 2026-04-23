@@ -1,10 +1,10 @@
-import logoOTM from "../../assets/logoOTM.png";
-import Alvaro from "../../assets/Alvaro.png";
-import Breno from "../../assets/Breno.png";
-import Jose from "../../assets/Jose.png";
-import Maria from "../../assets/Maria.png";
-import Marcia from "../../assets/Marcia.png";
-import Mayara from "../../assets/Mayara.png";
+import logoOTM from "../../assets/icons/logoOTM.png";
+import Alvaro from "../../assets/images/alvaro.png";
+import Breno from "../../assets/images/breno.png";
+import Jose from "../../assets/images/jose.png";
+import Maria from "../../assets/images/maria.png";
+import Marcia from "../../assets/images/marcia.png";
+import Mayara from "../../assets/images/mayara.png";
 import { RiGithubFill, RiLinkedinFill } from "react-icons/ri";
 
 interface TeamMember {
