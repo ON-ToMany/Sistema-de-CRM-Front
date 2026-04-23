@@ -96,7 +96,7 @@ return (
       </form>
 
       <p className="mt-6 font-medium text-black">
-        Não possui conta? <Link to="/Cadastro" className="text-[#0D542B] font-bold hover:underline">Cadastre-se aqui</Link>
+        Não possui conta? <Link to="/cadastrar" className="text-[#0D542B] font-bold hover:underline">Cadastre-se aqui</Link>
       </p>
 
     </div>
