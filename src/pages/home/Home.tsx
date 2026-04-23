@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import demoImg from "../../assets/img/demo.png";
-
 import {
   RiAlertLine,
   RiEyeLine,
@@ -30,16 +29,9 @@ const stats = [
   },
 ];
 
-// const features = [
-//     { label: "funcionalidade", img: feature1Img },
-//     { label: "funcionalidade", img: feature2Img },
-//     { label: "funcionalidade", img: feature3Img },
-// ];
-
 function Home() {
     return (
         <div className="min-h-screen w-full overflow-x-hidden bg-gray-200">
-
             <section className="bg-gray-200 pt-20">
                 <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
                     <div className="shrink-0 w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52">
@@ -49,6 +41,7 @@ function Home() {
                             className="w-full object-contain"
                         />
                     </div>
+
                     <div className="text-center md:text-left">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
                             <span className="text-green-900">Rastreabilidade</span> de ativos
@@ -66,13 +59,8 @@ function Home() {
                 </div>
             </section>
 
-     
-            <section
-                id="sobre"
-                className="bg-gray-100 w-full py-16 sm:py-20 overflow-hidden"
-            >
+            <section id="sobre" className="bg-gray-100 w-full py-16 sm:py-20 overflow-hidden">
                 <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-10 md:gap-16 items-start">
-                  
                     <div className="flex-1 min-w-0">
                         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-5">
                             Sobre
@@ -90,57 +78,57 @@ function Home() {
                         </p>
                     </div>
 
-          <div className="flex-1 relative flex justify-end">
-            <div className="absolute top-0 right-10 z-10 max-w-95">
-              <div className="relative bg-[#BFD8C3] border border-green-900 rounded-[30px] shadow-sm text-gray-800 text-sm px-6 py-4 flex items-start gap-3">
-                <RiAlertLine className="text-gray-700 text-xl shrink-0 mt-1" />
+                    <div className="flex-1 relative flex justify-end">
+                        <div className="absolute top-0 right-10 z-10 max-w-95">
+                            <div className="relative bg-[#BFD8C3] border border-green-900 rounded-[30px] shadow-sm text-gray-800 text-sm px-6 py-4 flex items-start gap-3">
+                                <RiAlertLine className="text-gray-700 text-xl shrink-0 mt-1" />
 
-                <span className="leading-snug">
-                  Todo esse e-lixo também contribui para milhões de toneladas de
-                  CO₂ na atmosfera.
-                </span>
+                                <span className="leading-snug">
+                                Todo esse e-lixo também contribui para milhões de toneladas de
+                                CO₂ na atmosfera.
+                                </span>
 
-                <div className="absolute -bottom-2 right-12 w-4 h-4 bg-[#BFD8C3] border-b border-r border-green-900 rotate-45"></div>
-              </div>
-            </div>
+                                <div className="absolute -bottom-2 right-12 w-4 h-4 bg-[#BFD8C3] border-b border-r border-green-900 rotate-45"></div>
+                            </div>
+                         </div>
 
-            <div className="w-full mt-14 sm:mt-16">
-              <img
-                src="https://ik.imagekit.io/9yqf3fqpw/lixo-eletronico.png"
-                alt="Lixo eletrônico"
-                className="w-full object-contain"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-gray-200 py-16 sm:py-20">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12 sm:mb-16">
-            Dados que impulsionam nossa{" "}
-            <span className="text-green-700">missão verde!</span>
-          </h2>
-
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-10">
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                className="flex flex-col items-center gap-3 w-full sm:w-auto"
-              >
-                <div
-                  className={`${s.bg} ${s.text} text-4xl sm:text-5xl md:text-6xl font-extrabold px-10 py-5 rounded-full w-full sm:min-w-50 text-center`}
-                >
-                  {s.value}
+                        <div className="w-full mt-14 sm:mt-16">
+                            <img
+                                src="https://ik.imagekit.io/9yqf3fqpw/lixo-eletronico.png"
+                                alt="Lixo eletrônico"
+                                className="w-full object-contain"
+                            />
+                        </div>
+                    </div>
                 </div>
-                <span className="text-sm sm:text-base text-gray-700">
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </section>
+
+            <section className="bg-gray-200 py-16 sm:py-20">
+                <div className="max-w-6xl mx-auto px-6 text-center">
+                    <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-12 sm:mb-16">
+                        Dados que impulsionam nossa{" "}
+                        <span className="text-green-700">missão verde!</span>
+                    </h2>
+
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-10">
+                        {stats.map((s) => (
+                        <div
+                            key={s.label}
+                            className="flex flex-col items-center gap-3 w-full sm:w-auto"
+                        >
+                            <div
+                            className={`${s.bg} ${s.text} text-4xl sm:text-5xl md:text-6xl font-extrabold px-10 py-5 rounded-full w-full sm:min-w-50 text-center`}
+                            >
+                            {s.value}
+                            </div>
+                            <span className="text-sm sm:text-base text-gray-700">
+                            {s.label}
+                            </span>
+                        </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
      
             <section className="bg-gray-100 py-16 sm:py-20">
                 <div className="max-w-6xl mx-auto px-6">
@@ -154,14 +142,15 @@ function Home() {
                         </h2>
                     </div>
 
-          <div className="flex flex-col md:flex-row gap-6 md:items-stretch">
-            <div className="md:w-[55%] rounded-2xl overflow-hidden shrink-0 flex items-center">
-              <img
-                src={demoImg}
-                alt="Demo do sistema"
-                className="w-full h-auto object-contain"
-              />
-            </div>
+                    <div className="flex flex-col md:flex-row gap-6 md:items-stretch">
+                        <div className="md:w-[55%] rounded-2xl overflow-hidden shrink-0 flex items-center">
+                            <img
+                                src={demoImg}
+                                alt="Demo do sistema"
+                                className="w-full h-auto object-contain"
+                            />
+                        </div>
+
                         <div className="flex flex-col gap-4 flex-1">
                             {[
                                 {
@@ -201,14 +190,12 @@ function Home() {
                         </div>
                     </div>
                 </div>
-              ))}
-            </div>
-          </div>
+            </section>
+            
+            <section id="ponto-de-coleta">
+                <Coleta />
+            </section>
         </div>
-      </section>
-      <Coleta />
-    </div>
-  );
+    );
 }
-
 export default Home;

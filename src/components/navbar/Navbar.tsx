@@ -10,7 +10,7 @@ function Navbar() {
   const navLinks = [
     { label: "Início", href: "/", type: "path" },
     { label: "Sobre", href: "/sobre", type: "path" },
-    { label: "Pontos de Coleta", href: "/coleta", type: "path" },
+    { label: "Pontos de Coleta", href: "#ponto-de-coleta", type: "hash" },
     { label: "Parceiros", href: "/parceria", type: "path" },
   ];
 
