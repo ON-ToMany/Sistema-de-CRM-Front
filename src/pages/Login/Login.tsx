@@ -51,7 +51,7 @@ return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-[#EAECEE]">
       
 
-      <p className="font-bold text-center text-gray-800 max-w-[400px] mb-6 text-[18px] leading-tight">
+      <p className="font-bold text-center text-gray-800 max-w-100px mb-6 text-[18px] leading-tight">
         Acesse sua conta para acompanhar ou gerenciar o processo de descarte de seu equipamento.
       </p>
 

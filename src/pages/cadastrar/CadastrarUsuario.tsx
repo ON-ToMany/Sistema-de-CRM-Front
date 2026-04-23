@@ -1,8 +1,8 @@
-import React from 'react'
+
 
 import { useEffect, useState, type ChangeEvent} from 'react'
 import { usuarioCadastrar } from '../../services/Service'
-import { useNavigate, Link } from 'react-router-dom' // Adicionei o Link para navegação
+import { useNavigate, Link } from 'react-router-dom' 
 import type Usuario from '../../models/Usuario'
 import { ToastAlerta } from '../../utils/ToastAlerta'
 import { ClipLoader } from "react-spinners";
@@ -21,7 +21,7 @@ export default function CadastrarUsuario() {
   })
 
   const [isloading, setIsloading] = useState<boolean>(false)
-  const [confirmarSenha, setConfirmarSenha] = useState<string>("") // Inicializado vazio
+  const [confirmarSenha, setConfirmarSenha] = useState<string>("") 
 
   const atualizarEstado = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setUsuario({ ...usuario, [e.target.name]: e.target.value })
@@ -103,7 +103,7 @@ export default function CadastrarUsuario() {
           <label htmlFor="tipo" className='text-[#0D542B] font-bold mb-1 ml-2'>Tipo</label>
           <select   
             name="tipo"
-            className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B] bg-white'
+            className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]'
             value={usuario.tipo} 
             onChange={atualizarEstado}
             required
