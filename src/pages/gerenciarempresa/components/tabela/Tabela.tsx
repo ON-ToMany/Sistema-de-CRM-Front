@@ -2,6 +2,7 @@ import { Tag, type Status } from "../../../../components/tag/Tag";
 import { RiBallPenFill } from "react-icons/ri";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useState } from "react";
+import { EditarOportunidadeModal } from "../modal/editaroportunidade/EditarOportunidade";
 
 interface Oportunidade {
   id: number;
@@ -10,7 +11,7 @@ interface Oportunidade {
   status: Status;
 }
 
-const dados: Oportunidade[] = [
+export const dados: Oportunidade[] = [
   { id: 1, nome: "Celular exemplo", categoria: "reuso", status: "Pendente" },
   { id: 2, nome: "Celular exemplo", categoria: "reuso", status: "Processando" },
   { id: 3, nome: "Celular exemplo", categoria: "reuso", status: "Finalizado" },
@@ -21,6 +22,7 @@ const dados: Oportunidade[] = [
 function Tabela() {
   const [filtroStatus, setFiltroStatus] = useState<Status | "">("");
   const [filtroCategoria, setFiltroCategoria] = useState<string>("");
+  const [open, setOpen] = useState(false);
 
   const dadosFiltrados = dados.filter((item) => {
     return (
@@ -31,6 +33,19 @@ function Tabela() {
 
   return (
     <div>
+
+      {/* Modal de edição */}
+      <EditarOportunidadeModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onSave={(data) => {
+          console.log(data);
+          setOpen(false);
+        }}
+      />
+
+
+      
       {/* Filtros */}
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
         <span className="text-sm sm:text-md text-gray-900">Filtros:</span>
@@ -81,7 +96,7 @@ function Tabela() {
                 </td>
                 <td className="px-3 sm:px-4 py-2 sm:py-3">
                   <div className="flex justify-center gap-2">
-                    <button className="p-1.5 sm:p-2 rounded-full border border-gray-700 bg-gray-700/10 hover:bg-gray-700/20 transition-colors duration-200">
+                    <button className="p-1.5 sm:p-2 rounded-full border border-gray-700 bg-gray-700/10 hover:bg-gray-700/20 transition-colors duration-200" onClick={() => setOpen(true)}>
                       <RiBallPenFill className="text-gray-700 text-sm sm:text-base" />
                     </button>
                     <button className="p-1.5 sm:p-2 rounded-full border border-red-800 bg-red-800/20 hover:bg-red-800/30 transition-colors duration-200">
