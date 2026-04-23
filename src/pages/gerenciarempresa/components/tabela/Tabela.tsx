@@ -57,7 +57,7 @@ function Tabela() {
 
   return (
     <div>
-      {/* Modal de edição */}
+
       <EditarOportunidadeModal
         isOpen={open}
         onClose={() => setOpen(false)}
@@ -88,7 +88,7 @@ function Tabela() {
         }}
       />
 
-      {/* Filtros */}
+   
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
         <span className="text-sm sm:text-md text-gray-900">Filtros:</span>
 

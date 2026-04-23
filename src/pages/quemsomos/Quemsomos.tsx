@@ -1,10 +1,10 @@
 import logoOTM from "../../assets/icons/logoOTM.png";
-import Alvaro from "../../assets/images/alvaro.png";
-import Breno from "../../assets/images/breno.png";
-import Jose from "../../assets/images/jose.png";
-import Maria from "../../assets/images/maria.png";
-import Marcia from "../../assets/images/marcia.png";
-import Mayara from "../../assets/images/mayara.png";
+import Alvaro from "../../assets/img/Alvaro.png";
+import Breno from "../../assets/img/Breno.png";
+import Jose from "../../assets/img/Jose.png";
+import Duda from "../../assets/img/Duda.png";
+import Marcia from "../../assets/img/Marcia.png";
+import Mayara from "../../assets/img/Mayara.png";
 import { RiGithubFill, RiLinkedinFill } from "react-icons/ri";
 
 interface TeamMember {
@@ -57,7 +57,7 @@ export default function AboutUs() {
         "Colaborou no desenvolvimento criativo,aplicação de paleta de cores e identidade visual, utilizando tecnologias tipo Figma",
       githubUrl: "https://github.com/memariaa",
       linkedinUrl: "https://www.linkedin.com/in/memariaa/",
-      imageUrl: Maria,
+      imageUrl: Duda,
     },
     {
       id: 5,

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useEffect, useState, type ChangeEvent} from 'react'
 import { usuarioCadastrar } from '../../services/Service'
-import { useNavigate, Link } from 'react-router-dom' // Adicionei o Link para navegação
+import { useNavigate, Link } from 'react-router-dom' 
 import type Usuario from '../../models/Usuario'
 import { ToastAlerta } from '../../utils/ToastAlerta'
 import { ClipLoader } from "react-spinners";
@@ -21,7 +21,7 @@ export default function CadastrarUsuario() {
   })
 
   const [isloading, setIsloading] = useState<boolean>(false)
-  const [confirmarSenha, setConfirmarSenha] = useState<string>("") // Inicializado vazio
+  const [confirmarSenha, setConfirmarSenha] = useState<string>("") 
 
   const atualizarEstado = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setUsuario({ ...usuario, [e.target.name]: e.target.value })

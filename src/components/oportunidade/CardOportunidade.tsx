@@ -1,4 +1,4 @@
-import React, { useContext, useState, type ChangeEvent, type FormEvent } from 'react'
+import { useContext, useState, type ChangeEvent, type SyntheticEvent, } from 'react'
 import type { Oportunidade } from '../../models/Oportunidade'
 import { ClipLoader } from 'react-spinners'
 import { cadastrar } from '../../services/Service'
@@ -14,7 +14,7 @@ export default function CardOportunidade() {
     setOportunidade({ ...oportunidade, [e.target.name]: e.target.value })
   }
 
-  async function cadastrarOportunidade(e: FormEvent<HTMLFormElement>) {
+  async function cadastrarOportunidade(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault() 
     
 

@@ -1,7 +1,5 @@
 import demoImg from "../../assets/img/demo.png";
-import feature1Img from "../../assets/img/feature1.png";
-import feature2Img from "../../assets/img/feature2.png";
-import feature3Img from "../../assets/img/feature3.png";
+
 import {
     RiAlertLine,
     RiEyeLine,
@@ -30,16 +28,16 @@ const stats = [
     },
 ];
 
-const features = [
-    { label: "funcionalidade", img: feature1Img },
-    { label: "funcionalidade", img: feature2Img },
-    { label: "funcionalidade", img: feature3Img },
-];
+// const features = [
+//     { label: "funcionalidade", img: feature1Img },
+//     { label: "funcionalidade", img: feature2Img },
+//     { label: "funcionalidade", img: feature3Img },
+// ];
 
 function Home() {
     return (
         <div className="min-h-screen w-full overflow-x-hidden bg-gray-200">
-            {/* ── HERO ── */}
+
             <section className="bg-gray-200 pt-20">
                 <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
                     <div className="shrink-0 w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52">
@@ -66,13 +64,13 @@ function Home() {
                 </div>
             </section>
 
-            {/* ── SOBRE ── */}
+     
             <section
                 id="sobre"
                 className="bg-gray-100 w-full py-16 sm:py-20 overflow-hidden"
             >
                 <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-10 md:gap-16 items-start">
-                    {/* Texto */}
+                  
                     <div className="flex-1 min-w-0">
                         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-5">
                             Sobre
@@ -142,7 +140,7 @@ function Home() {
                 </div>
             </section>
 
-            {/* ── NOSSO SISTEMA ── */}
+     
             <section className="bg-gray-100 py-16 sm:py-20">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="flex flex-col items-center text-center mb-12 sm:mb-16">

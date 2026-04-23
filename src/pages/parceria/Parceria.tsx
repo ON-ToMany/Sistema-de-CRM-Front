@@ -130,7 +130,7 @@ function Parceria() {
                 </h3>
               </div>
 
-              {/* ATRÁS */}
+           
               <div
                 className="absolute w-full h-full rounded-2xl border border-green-950 bg-lime-100 flex items-center justify-center p-4 text-center"
                 style={{
