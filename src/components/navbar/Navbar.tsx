@@ -12,7 +12,7 @@ function Navbar() {
     { label: "Pontos de Coleta", href: "/coleta", type: "path" },
     { label: "Parceiros", href: "/parceria", type: "path" },
     { label: "Rastreie", href: "/rastreamento", type: "path" },
-    { label: "Gerencie", href: "/gerenciamento", type: "path" },
+    { label: "Gerencie", href: "/gerenciar-empresa", type: "path" },
   ];
 
   const isActive = (href: string, type: string) => {

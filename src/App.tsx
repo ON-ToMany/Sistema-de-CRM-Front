@@ -5,6 +5,7 @@ import Ticker from "./components/ticker/Ticker";
 import Footer from "./components/footer/Footer";
 import Parceria from "./pages/parceria/Parceria";
 import Quemsomos from "./pages/quemsomos/Quemsomos";
+import GerenciarEmpresa from "./pages/gerenciarempresa/GerenciarEmpresa";
 import { AuthProvider } from "./contexts/AuthContext"; 
 import LoginUsuario from "./pages/Login/Login";
 import CadastrarUsuario from "./pages/cadastrar/CadastrarUsuario";
@@ -29,6 +30,7 @@ function App() {
               <Route path="/Login" element={<LoginUsuario />}/>
               <Route path="/cadatrar" element={<CadastrarUsuario/>}  />
               <Route path="/" element={<CardOportunidade/>} />
+              <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
             </Routes>
           </div>
 
