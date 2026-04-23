@@ -5,7 +5,7 @@ import Ticker from "./components/ticker/Ticker";
 import Footer from "./components/footer/Footer";
 import Parceria from "./pages/parceria/Parceria";
 import Quemsomos from "./pages/quemsomos/Quemsomos";
-// import { Footer } from "./components/footer/Footer"
+import GerenciarEmpresa from "./pages/gerenciarempresa/GerenciarEmpresa";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <Route path="/inicio" element={<Home />} />
           <Route path="/Parceria" element={<Parceria />} />
           <Route path="/Sobre" element={<Quemsomos />} />
+          <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
         </Routes>
       </div>
       <Ticker />
