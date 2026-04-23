@@ -16,7 +16,7 @@ export default function Ticker() {
         .ticker-track {
           display: flex;
           width: max-content;
-          animation: ticker 22s linear infinite;
+          animation: ticker 45s linear infinite;
         }
       `}</style>
       <div className="ticker-track">
