@@ -56,7 +56,7 @@ const Footer = () => (
                             +55 21 4002-8922
                         </li>
                         <li className="text-gray-950 text-sm">
-                            contato@friendlyfood.com.br
+                            contato@greentech.com.br
                         </li>
                     </ul>
                 </div>

@@ -11,34 +11,28 @@ import LoginUsuario from "./pages/Login/Login";
 import CadastrarUsuario from "./pages/cadastrar/CadastrarUsuario";
 import CardOportunidade from "./components/oportunidade/CardOportunidade";
 import { ToastContainer } from 'react-toastify';
+import DashboardEmpresa from "./pages/dashboard/DashboardEmpresa";
 
 function App() {
   return (
+    <AuthProvider>
+      <ToastContainer/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<><Navbar/><Home/><Ticker/><Footer/></>} />
+          <Route path="/inicio" element={<><Navbar/><Home/><Ticker/><Footer/></>} />
+          <Route path="/Parceria" element={<><Navbar/><Parceria/><Ticker/><Footer/></>} />
+          <Route path="/Sobre" element={<><Navbar/><Quemsomos/><Ticker/><Footer/></>} />
+          <Route path="/Login" element={<><Navbar/><LoginUsuario/><Footer/></>} />
+          <Route path="/cadastrar" element={<><Navbar/><CadastrarUsuario/><Footer/></>} />
+          <Route path="/oportunidades" element={<><Navbar/><CardOportunidade/><Footer/></>} />
+          <Route path="/gerenciar-empresa" element={<><Navbar/><GerenciarEmpresa/><Footer/></>} />
 
-   <AuthProvider> 
-       <ToastContainer/>
-        <BrowserRouter>
-
-          <Navbar />
-
-          <div className="flex flex-col min-h-screen">
-            <Routes>  
-              <Route path="/" element={<Home />} />
-              <Route path="/inicio" element={<Home />} />
-              <Route path="/Parceria" element={<Parceria />} />
-              <Route path="/Sobre" element={<Quemsomos />} />
-              <Route path="/Login" element={<LoginUsuario />}/>
-              <Route path="/cadatrar" element={<CadastrarUsuario/>}  />
-              <Route path="/" element={<CardOportunidade/>} />
-              <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
-            </Routes>
-          </div>
-
-          <Ticker />
-          <Footer />
-
-        </BrowserRouter>
-      </AuthProvider>
-  );
+          <Route path="/dashboard-empresa" element={<DashboardEmpresa/>} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  )
 }
+
 export default App;
