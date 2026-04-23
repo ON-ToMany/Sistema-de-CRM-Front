@@ -5,24 +5,33 @@ import Ticker from "./components/ticker/Ticker";
 import Footer from "./components/footer/Footer";
 import Parceria from "./pages/parceria/Parceria";
 import Quemsomos from "./pages/quemsomos/Quemsomos";
-// import { Footer } from "./components/footer/Footer"
+import { AuthProvider } from "./contexts/AuthContext"; 
+import LoginUsuario from "./pages/Login/Login";
+import CadastrarUsuario from "./pages/cadastrar/CadastrarUsuario";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <div className="flex flex-col min-h-screen">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/inicio" element={<Home />} />
-          <Route path="/Parceria" element={<Parceria />} />
-          <Route path="/Sobre" element={<Quemsomos />} />
-        </Routes>
-      </div>
-      <Ticker />
-      <Footer />
-    </BrowserRouter>
+    <AuthProvider> 
+      <BrowserRouter>
+        
+        <Navbar />
+        
+        <div className="flex flex-col min-h-screen">
+          <Routes>  
+            <Route path="/" element={<Home />} />
+            <Route path="/inicio" element={<Home />} />
+            <Route path="/Parceria" element={<Parceria />} />
+            <Route path="/Sobre" element={<Quemsomos />} />
+            <Route path="/Login" element={<LoginUsuario />}/>
+            <Route path="/Cadastro" element={<CadastrarUsuario/>}  />
+          </Routes>
+        </div>
+        
+        <Ticker />
+        <Footer />
+        
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
-
 export default App;
