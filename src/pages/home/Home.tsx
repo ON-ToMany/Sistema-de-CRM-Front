@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import demoImg from "../../assets/img/demo.png";
 
 import {
@@ -191,9 +192,11 @@ function Home() {
                                     <p className="text-gray-600 text-sm leading-relaxed">
                                         {card.desc}
                                     </p>
-                                    <button className="mt-auto self-start bg-green-900 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-green-800 transition-colors">
-                                        Saiba mais
-                                    </button>
+                                    <Link to="/login">
+                                        <button className="mt-auto self-start bg-green-900 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-green-800 transition-colors">
+                                            Saiba mais
+                                        </button>
+                                    </Link>
                                 </div>
                             ))}
                         </div>
