@@ -117,8 +117,8 @@ function Tabela() {
       </div>
 
       {/* Tabela com scroll horizontal no mobile */}
-      <div className="w-full mt-4 overflow-x-auto -mx-0">
-        <table className="w-full min-w-[480px] border-spacing-y-2">
+      <div className="w-full mt-4 overflow-x-auto mx-0">
+        <table className="w-full min-w-120 border-spacing-y-2">
           <thead>
             <tr className="text-left text-sm text-green-900 font-normal border-b border-green-950">
               <th className="px-3 sm:px-4 pb-2 border-b border-green-900 font-medium">Oportunidade</th>
