@@ -4,7 +4,7 @@ export default interface Usuario {
     cpf:string;
     tipo:string;
     nome: string;
-    usuario: string; 
+    email: string; 
     senha: string;  
     foto: string;
 }

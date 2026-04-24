@@ -6,39 +6,41 @@ import Footer from "./components/footer/Footer";
 import Parceria from "./pages/parceria/Parceria";
 import Quemsomos from "./pages/quemsomos/Quemsomos";
 import GerenciarEmpresa from "./pages/gerenciarempresa/GerenciarEmpresa";
-import { AuthProvider } from "./contexts/AuthContext"; 
+import { AuthProvider } from "./contexts/AuthContext";
 import LoginUsuario from "./pages/Login/Login";
 import CadastrarUsuario from "./pages/cadastrar/CadastrarUsuario";
 import CardOportunidade from "./components/oportunidade/CardOportunidade";
 import { ToastContainer } from 'react-toastify';
 
+
 function App() {
   return (
 
-   <AuthProvider> 
-       <ToastContainer/>
-        <BrowserRouter>
+    <AuthProvider>
+      <ToastContainer />
+      <BrowserRouter>
 
-          <Navbar />
+        <Navbar />
 
-          <div className="flex flex-col min-h-screen">
-            <Routes>  
-              <Route path="/" element={<Home />} />
-              <Route path="/inicio" element={<Home />} />
-              <Route path="/Parceria" element={<Parceria />} />
-              <Route path="/Sobre" element={<Quemsomos />} />
-              <Route path="/Login" element={<LoginUsuario />}/>
-              <Route path="/cadatrar" element={<CadastrarUsuario/>}  />
-              <Route path="/" element={<CardOportunidade/>} />
-              <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
-            </Routes>
-          </div>
+        <div className="flex flex-col min-h-screen">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/inicio" element={<Home />} />
+            <Route path="/Parceria" element={<Parceria />} />
+            <Route path="/Sobre" element={<Quemsomos />} />
+            <Route path="/Login" element={<LoginUsuario />} />
+            <Route path="/cadastrar" element={<CadastrarUsuario />} />
+            <Route path="/oportunidadeCadastro" element={<CardOportunidade />} />
+            <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
+           
+          </Routes>
+        </div>
 
-          <Ticker />
-          <Footer />
+        <Ticker />
+        <Footer />
 
-        </BrowserRouter>
-      </AuthProvider>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 export default App;

@@ -1,15 +1,15 @@
-import { createContext, useRef, useState, type ReactNode, type Dispatch,type SetStateAction } from "react";
+import { createContext, useRef, useState, type ReactNode, type Dispatch, type SetStateAction } from "react";
 import type UsuarioLogin from "../models/UsuarioLogin";
-import { ToastAlerta } from "../utils/ToastAlerta"; 
+import { ToastAlerta } from "../utils/ToastAlerta";
 import { Login } from "../services/Service";
 
-  interface AuthContextProps {
-    usuario: UsuarioLogin
+interface AuthContextProps {
+  usuario: UsuarioLogin
   handleLogout(): void
   handleLogin(usuario: UsuarioLogin): Promise<void>
   isLoading: boolean
   isLogout: boolean
-  setUsuario: Dispatch<SetStateAction<UsuarioLogin>> 
+  setUsuario: Dispatch<SetStateAction<UsuarioLogin>>
 }
 
 interface AuthProviderProps {
@@ -23,10 +23,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [usuario, setUsuario] = useState<UsuarioLogin>({
     id: 0,
     nome: "",
-    usuario: "",
+    email: "",
     senha: "",
     foto: "",
-    token: ""
+    access_token: ""
   });
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -37,9 +37,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setIsLoading(true);
     try {
 
-      await Login('/usuarios/logar', usuarioLogin, setUsuario);
+     const resposta =  await Login('/auth/login', usuarioLogin, setUsuario);
       ToastAlerta('Usuário autenticado com sucesso!', 'sucesso');
       isLogout.current = false;
+      localStorage.setItem('usuario',resposta.access_token)
 
     } catch (error) {
       console.log(error);
@@ -53,21 +54,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setUsuario({
       id: 0,
       nome: "",
-      usuario: "",
+      email: "",
       senha: "",
       foto: "",
-      token: ""
+      access_token: ""
     })
   }
 
   return (
-    <AuthContext.Provider value={{ 
-      usuario, 
-      handleLogin, 
-      handleLogout, 
-      isLoading, 
-      isLogout: isLogout.current, 
-      setUsuario 
+    <AuthContext.Provider value={{
+      usuario,
+      handleLogin,
+      handleLogout,
+      isLoading,
+      isLogout: isLogout.current,
+      setUsuario
     }}>
       {children}
     </AuthContext.Provider>
