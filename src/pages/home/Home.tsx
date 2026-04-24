@@ -1,45 +1,37 @@
+import { Link } from "react-router-dom";
 import demoImg from "../../assets/img/demo.png";
-import feature1Img from "../../assets/img/feature1.png";
-import feature2Img from "../../assets/img/feature2.png";
-import feature3Img from "../../assets/img/feature3.png";
 import {
-    RiAlertLine,
-    RiEyeLine,
-    RiLeafLine,
-    RiLineChartLine,
+  RiAlertLine,
+  RiEyeLine,
+  RiLeafLine,
+  RiLineChartLine,
 } from "react-icons/ri";
+import Coleta from "./coleta/Coleta";
 
 const stats = [
-    {
-        value: "+2,4M",
-        label: "toneladas/ano",
-        bg: "bg-green-400",
-        text: "text-green-900",
-    },
-    {
-        value: "3%",
-        label: "reciclado corretamente",
-        bg: "bg-yellow-300",
-        text: "text-yellow-900",
-    },
-    {
-        value: "95%",
-        label: "descarte incorreto",
-        bg: "bg-red-400",
-        text: "text-red-900",
-    },
-];
-
-const features = [
-    { label: "funcionalidade", img: feature1Img },
-    { label: "funcionalidade", img: feature2Img },
-    { label: "funcionalidade", img: feature3Img },
+  {
+    value: "+2,4M",
+    label: "toneladas/ano",
+    bg: "bg-green-400",
+    text: "text-green-900",
+  },
+  {
+    value: "3%",
+    label: "reciclado corretamente",
+    bg: "bg-yellow-300",
+    text: "text-yellow-900",
+  },
+  {
+    value: "95%",
+    label: "descarte incorreto",
+    bg: "bg-red-400",
+    text: "text-red-900",
+  },
 ];
 
 function Home() {
     return (
         <div className="min-h-screen w-full overflow-x-hidden bg-gray-200">
-            {/* ── HERO ── */}
             <section className="bg-gray-200 pt-20">
                 <div className="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row items-center gap-10">
                     <div className="shrink-0 w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52">
@@ -49,6 +41,7 @@ function Home() {
                             className="w-full object-contain"
                         />
                     </div>
+
                     <div className="text-center md:text-left">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
                             <span className="text-green-900">Rastreabilidade</span> de ativos
@@ -66,13 +59,8 @@ function Home() {
                 </div>
             </section>
 
-            {/* ── SOBRE ── */}
-            <section
-                id="sobre"
-                className="bg-gray-100 w-full py-16 sm:py-20 overflow-hidden"
-            >
+            <section id="sobre" className="bg-gray-100 w-full py-16 sm:py-20 overflow-hidden">
                 <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-10 md:gap-16 items-start">
-                    {/* Texto */}
                     <div className="flex-1 min-w-0">
                         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-5">
                             Sobre
@@ -96,13 +84,13 @@ function Home() {
                                 <RiAlertLine className="text-gray-700 text-xl shrink-0 mt-1" />
 
                                 <span className="leading-snug">
-                                    Todo esse e-lixo também contribui para milhões de toneladas de
-                                    CO₂ na atmosfera.
+                                Todo esse e-lixo também contribui para milhões de toneladas de
+                                CO₂ na atmosfera.
                                 </span>
 
                                 <div className="absolute -bottom-2 right-12 w-4 h-4 bg-[#BFD8C3] border-b border-r border-green-900 rotate-45"></div>
                             </div>
-                        </div>
+                         </div>
 
                         <div className="w-full mt-14 sm:mt-16">
                             <img
@@ -124,25 +112,24 @@ function Home() {
 
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-10">
                         {stats.map((s) => (
+                        <div
+                            key={s.label}
+                            className="flex flex-col items-center gap-3 w-full sm:w-auto"
+                        >
                             <div
-                                key={s.label}
-                                className="flex flex-col items-center gap-3 w-full sm:w-auto"
+                            className={`${s.bg} ${s.text} text-4xl sm:text-5xl md:text-6xl font-extrabold px-10 py-5 rounded-full w-full sm:min-w-50 text-center`}
                             >
-                                <div
-                                    className={`${s.bg} ${s.text} text-4xl sm:text-5xl md:text-6xl font-extrabold px-10 py-5 rounded-full w-full sm:min-w-50 text-center`}
-                                >
-                                    {s.value}
-                                </div>
-                                <span className="text-sm sm:text-base text-gray-700">
-                                    {s.label}
-                                </span>
+                            {s.value}
                             </div>
+                            <span className="text-sm sm:text-base text-gray-700">
+                            {s.label}
+                            </span>
+                        </div>
                         ))}
                     </div>
                 </div>
             </section>
-
-            {/* ── NOSSO SISTEMA ── */}
+     
             <section className="bg-gray-100 py-16 sm:py-20">
                 <div className="max-w-6xl mx-auto px-6">
                     <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
@@ -193,17 +180,22 @@ function Home() {
                                     <p className="text-gray-600 text-sm leading-relaxed">
                                         {card.desc}
                                     </p>
-                                    <button className="mt-auto self-start bg-green-900 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-green-800 transition-colors">
-                                        Saiba mais
-                                    </button>
+                                    <Link to="/login">
+                                        <button className="mt-auto self-start bg-green-900 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-green-800 transition-colors">
+                                            Saiba mais
+                                        </button>
+                                    </Link>
                                 </div>
                             ))}
                         </div>
                     </div>
                 </div>
             </section>
+            
+            <section id="ponto-de-coleta">
+                <Coleta />
+            </section>
         </div>
     );
 }
-
 export default Home;

@@ -17,7 +17,6 @@ export default function CardOportunidade() {
   async function cadastrarOportunidade(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault()
     const gettoken = localStorage.getItem("usuario")
-    
     try {
       setIsloading(true)
       await cadastrar("oportunidades/cadastrar", oportunidade, setOportunidade, {

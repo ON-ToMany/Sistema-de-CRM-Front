@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Logo from "../../assets/img/logoescrita-crm.png";
+import Logo from "../../assets/icons/logoescrita-crm.png";
 import { Link, useLocation } from "react-router-dom";
+import { RiUser3Fill } from "react-icons/ri";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,10 +10,8 @@ function Navbar() {
   const navLinks = [
     { label: "Início", href: "/", type: "path" },
     { label: "Sobre", href: "/sobre", type: "path" },
-    { label: "Pontos de Coleta", href: "/coleta", type: "path" },
+    { label: "Pontos de Coleta", href: "#ponto-de-coleta", type: "hash" },
     { label: "Parceiros", href: "/parceria", type: "path" },
-    { label: "Rastreie", href: "/rastreamento", type: "path" },
-    { label: "Gerencie", href: "/gerenciar-empresa", type: "path" },
   ];
 
   const isActive = (href: string, type: string) => {
@@ -49,7 +48,7 @@ function Navbar() {
             ))}
           </ul>
         </nav>
-
+        <div className="flex flex-row items-center gap-4">
         <button
           className="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded-lg hover:bg-green-900/10 transition-colors"
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -71,6 +70,13 @@ function Navbar() {
             }`}
           />
         </button>
+
+        <Link to='/login'>
+          <div className='bg-green-800 p-1 md:p-2 rounded-full hover:bg-green-900 transition-colors duration-200'>
+            <RiUser3Fill className='text-gray-200 text-xl md:text-3xl' />
+          </div>
+        </Link>
+        </div>
       </div>
 
       <div
