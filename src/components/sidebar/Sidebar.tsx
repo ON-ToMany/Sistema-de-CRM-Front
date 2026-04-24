@@ -1,23 +1,46 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Home, Plus } from 'lucide-react';
+import { useContext } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Home, Plus, Settings } from 'lucide-react';
 import logoEscritaCrm from '../../assets/icons/logoescrita-crm.png';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Sidebar = () => {
-  const navItems = [
-    { name: 'Inicio', path: '/dashboard', icon: Home },
-    { name: 'Cadastrar', path: '/dashboard/cadastrar', icon: Plus },
-    { name: 'Listar Todas', path: '/dashboard/listar', icon: Plus },
+  const { usuario, handleLogout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const navItemsEmpresa = [
+    { name: 'Início',    path: '/dashboard-empresa',  icon: Home     },
+    { name: 'Gerenciar', path: '/gerenciar-empresa',  icon: Settings },
   ];
+
+  const navItemsCliente = [
+    { name: 'Início',            path: '/dashboard-cliente',      icon: Home },
+    { name: 'Cadastrar',         path: '/cadastrar-oportunidade', icon: Plus },
+    { name: 'Listar Todas',      path: '/oportunidades',          icon: Plus },
+  ];
+
+  const navItems = usuario.tipo === 'empresa' ? navItemsEmpresa : navItemsCliente;
+
+  function sair() {
+    handleLogout();
+    navigate('/login');
+  }
 
   return (
     <aside className="w-64 h-screen bg-[#C4D1C9] flex flex-col fixed left-0 top-0 border-r border-[#AAB7AF] rounded-r-[40px] z-50">
-      {/* Logo Section */}
+      
+      {/* Logo */}
       <div className="p-8 flex items-center">
         <img src={logoEscritaCrm} alt="Greentech CRM Logo" className="h-16 w-auto object-contain" />
       </div>
 
-      {/* Navigation Items */}
+      {/* Saudação com nome do usuário */}
+      <div className="px-8 pb-2">
+        <p className="text-[#114232] font-semibold text-sm">Olá,</p>
+        <p className="text-[#114232] font-bold text-base truncate">{usuario.nome}</p>
+      </div>
+
+      {/* Navegação */}
       <nav className="flex-1 mt-10 px-6 space-y-6">
         {navItems.map((item) => (
           <NavLink
@@ -25,22 +48,24 @@ const Sidebar = () => {
             to={item.path}
             className={({ isActive }) =>
               `flex items-center gap-4 px-4 py-2 transition-all duration-200 group ${
-                isActive ? 'text-[#114232] font-bold' : 'text-[#114232] font-semibold opacity-80 hover:opacity-100'
+                isActive
+                  ? 'text-[#114232] font-bold'
+                  : 'text-[#114232] font-semibold opacity-80 hover:opacity-100'
               }`
             }
           >
-            <item.icon 
-              className="w-6 h-6" 
-              strokeWidth={2.5}
-            />
+            <item.icon className="w-6 h-6" strokeWidth={2.5} />
             <span className="text-xl">{item.name}</span>
           </NavLink>
         ))}
       </nav>
 
-      {/* Footer - Logout Button */}
+      {/* Botão Sair */}
       <div className="p-8 mt-auto">
-        <button className="w-full bg-[#114232] text-white font-bold py-3 px-6 rounded-full text-xl hover:bg-[#0c3125] transition-colors shadow-md">
+        <button
+          onClick={sair}
+          className="w-full bg-[#114232] text-white font-bold py-3 px-6 rounded-full text-xl hover:bg-[#0c3125] transition-colors shadow-md cursor-pointer"
+        >
           SAIR
         </button>
       </div>

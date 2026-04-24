@@ -14,6 +14,7 @@ const DashboardEmpresa: FC = () => {
 
 return (
     <div className="flex flex-row h-screen bg-[#E9ECEF] w-full overflow-hidden font-sans">
+      {/* //apagar esse menu interno  */}
       <aside className="group w-20 hover:w-64 h-full bg-[#E4EBE4] border-r border-[#0D542B] flex flex-col p-6 shadow-sm rounded-tr-[50px] rounded-br-[50px] z-10 transition-all duration-500 ease-in-out overflow-hidden">
         
         <div className="flex flex-row items-center gap-4 mb-16 w-full h-18 px-2">
