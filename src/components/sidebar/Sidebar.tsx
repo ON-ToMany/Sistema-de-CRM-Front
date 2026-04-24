@@ -1,7 +1,12 @@
+
 import { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Home, Plus, Settings } from 'lucide-react';
 import logoEscritaCrm from '../../assets/icons/logoescrita-crm.png';
+import { AuthContext } from '../../contexts/AuthContext';
+
+
+import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const Sidebar = () => {
@@ -16,7 +21,7 @@ const Sidebar = () => {
   const navItemsCliente = [
     { name: 'Início',            path: '/dashboard-cliente',      icon: Home },
     { name: 'Cadastrar',         path: '/cadastrar-oportunidade', icon: Plus },
-    { name: 'Listar Todas',      path: '/oportunidades',          icon: Plus },
+    { name: 'Listar Todas',      path: '/listar-oportunidades',   icon: Plus },
   ];
 
   const navItems = usuario.tipo === 'empresa' ? navItemsEmpresa : navItemsCliente;
@@ -27,20 +32,18 @@ const Sidebar = () => {
   }
 
   return (
-    <aside className="w-64 h-screen bg-[#C4D1C9] flex flex-col fixed left-0 top-0 border-r border-[#AAB7AF] rounded-r-[40px] z-50">
-      
+    <aside className="w-64 h-screen bg-[#C4D1C9] flex flex-col fixed left-0 top-0 border-r border-[#AAB7AF] rounded-r-[40px] z-50">    
       {/* Logo */}
       <div className="p-8 flex items-center">
         <img src={logoEscritaCrm} alt="Greentech CRM Logo" className="h-16 w-auto object-contain" />
       </div>
-
+      
       {/* Saudação com nome do usuário */}
       <div className="px-8 pb-2">
         <p className="text-[#114232] font-semibold text-sm">Olá,</p>
         <p className="text-[#114232] font-bold text-base truncate">{usuario.nome}</p>
       </div>
-
-      {/* Navegação */}
+        
       <nav className="flex-1 mt-10 px-6 space-y-6">
         {navItems.map((item) => (
           <NavLink

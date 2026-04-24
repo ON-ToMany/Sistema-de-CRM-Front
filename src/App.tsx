@@ -12,6 +12,8 @@ import DashboardEmpresa from "./pages/gerenciarempresa/DashboardEmpresa";
 import Dashboard from "./pages/dashboard/Dashboard";
 import PublicLayout from "./components/layouts/layoutpublico/LayoutPublico";
 import DashboardLayout from "./components/layouts/layoutdashboard/LayoutDashboards";
+import OpportunityTable from "./components/dashboard/Opportunity";
+import ListarOportunidades from "./pages/listaroportunidades/ListarOportunidades";
 
 function App() {
   return (
@@ -32,7 +34,8 @@ function App() {
           <Route path="/dashboard-empresa" element={<DashboardEmpresa/>} />
           <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
           <Route path="/dashboard-cliente" element={<Dashboard />} />
-          <Route path="/oportunidades" element={<CardOportunidade/>} />
+          <Route path="/listar-oportunidades" element={<ListarOportunidades />} />
+          <Route path="/cadastrar-oportunidade" element={<CardOportunidade/>} /
         </Route>
         </Routes>
       </BrowserRouter>
