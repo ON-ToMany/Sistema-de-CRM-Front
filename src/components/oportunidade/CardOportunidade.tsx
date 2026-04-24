@@ -8,7 +8,8 @@ import { ToastAlerta } from '../../utils/ToastAlerta'
 export default function CardOportunidade() {
   const [isloading, setIsloading] = useState<boolean>(false)
   const [oportunidade, setOportunidade] = useState<Oportunidade>({} as Oportunidade)
-  const { handleLogout } = useContext(AuthContext)
+  
+  const { handleLogout, usuario } = useContext(AuthContext)
 
   const atualizarEstado = (e: ChangeEvent<HTMLInputElement>) => {
     setOportunidade({ ...oportunidade, [e.target.name]: e.target.value })
@@ -16,12 +17,17 @@ export default function CardOportunidade() {
 
   async function cadastrarOportunidade(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault()
-    const gettoken = localStorage.getItem("usuario")
+
+    if (!usuario?.access_token) {
+      ToastAlerta("Usuário deve estar logado", "erro")
+      return
+    }
+
     try {
       setIsloading(true)
-      await cadastrar("oportunidades/cadastrar", oportunidade, setOportunidade, {
+      await cadastrar("/oportunidades/cadastrar", oportunidade, setOportunidade, {
         headers: {
-          Authorization: `Bearer ${gettoken}`
+          Authorization: `Bearer ${usuario.access_token}` // ✅
         }
       })
       ToastAlerta("Oportunidade cadastrada com sucesso!", "success")
