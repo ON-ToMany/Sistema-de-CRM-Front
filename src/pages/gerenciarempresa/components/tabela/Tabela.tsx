@@ -3,7 +3,7 @@ import { RiBallPenFill } from "react-icons/ri";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { EditarOportunidadeModal } from "../modal/editaroportunidade/EditarOportunidade";
-import { atualizar, buscar, deletar } from "../../../../services/Service";
+import { ConfirmDeleteModal } from "../modal/confirmadelete/ConfirmaDelete";
 
 interface Oportunidade {
   id: number;
@@ -13,12 +13,12 @@ interface Oportunidade {
 }
 
 const dados: Oportunidade[] = [
-  { id: 1, nome: "Celular exemplo", categoria: "reuso", status: "Pendente" },
-  { id: 2, nome: "Celular exemplo", categoria: "reuso", status: "Processando" },
-  { id: 3, nome: "Celular exemplo", categoria: "reciclagem", status: "Finalizado" },
-  { id: 4, nome: "Celular exemplo", categoria: "reuso", status: "Pendente" },
-  { id: 5, nome: "Celular exemplo", categoria: "reuso", status: "Processando" },
-  { id: 6, nome: "Computador exemplo", categoria: "reciclagem", status: "Finalizado" },
+  { id: 1, equipamento: "Celular exemplo", categoria: "reuso", status: "Pendente" },
+  { id: 2, equipamento: "Notebook exemplo", categoria: "reuso", status: "Processando" },
+  { id: 3, equipamento: "Monitor exemplo", categoria: "reciclagem", status: "Finalizado" },
+  { id: 4, equipamento: "Celular exemplo", categoria: "reuso", status: "Pendente" },
+  { id: 5, equipamento: "Tablet exemplo", categoria: "reuso", status: "Processando" },
+  { id: 6, equipamento: "Computador exemplo", categoria: "reciclagem", status: "Finalizado" },
 ];
 
 function Tabela() {
@@ -27,25 +27,11 @@ function Tabela() {
   const [filtroCategoria, setFiltroCategoria] = useState<string>("");
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState<Oportunidade | null>(null);
-
-  const token = localStorage.getItem("token");
-
-  const header = {
-    headers: {
-      Authorization: token,
-    },
-  };
-
-  async function buscarOportunidades() {
-    try {
-      await buscar("/oportunidades/todas", setOportunidades, header);
-    } catch (error) {
-      console.error(error);
-    }
-  }
+  const [openDelete, setOpenDelete] = useState(false);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
 
   useEffect(() => {
-    buscarOportunidades();
+    setOportunidades(dados);
   }, []);
 
   const dadosFiltrados = oportunidades.filter((item) => {
@@ -55,18 +41,13 @@ function Tabela() {
     );
   });
 
-  async function handleDelete(id: number) {
-    try {
-      await deletar(`/oportunidades/deletar/${id}`, header);
-      setOportunidades((prev) => prev.filter((item) => item.id !== id));
-    } catch (error) {
-      console.error(error);
-    }
+  function handleDelete(id: number) {
+    setDeleteId(id);
+    setOpenDelete(true);
   }
 
   return (
     <div>
-
       <EditarOportunidadeModal
         isOpen={open}
         onClose={() => setOpen(false)}
@@ -75,32 +56,33 @@ function Tabela() {
           categoria: selected?.categoria,
           status: selected?.status,
         }}
-        onSave={async (data) => {
-          try {
-            await atualizar(
-              `/oportunidades/atualizar`,
-              {
-                id: selected?.id,
-                equipamento: data.nomeEquipamento,
-                categoria: data.categoria,
-                status: data.status,
-              },
-              () => {},
-              header
-            );
-
-            await buscarOportunidades();
-            setOpen(false);
-          } catch (error) {
-            console.error(error);
-          }
+        onSave={(data) => {
+          setOportunidades((prev) =>
+            prev.map((item) =>
+              item.id === selected?.id
+                ? {
+                    ...item,
+                    equipamento: data.nomeEquipamento,
+                    categoria: data.categoria,
+                    status: data.status as Status,
+                  }
+                : item
+            )
+          );
+          setOpen(false);
         }}
       />
 
-   
+      <ConfirmDeleteModal
+        isOpen={openDelete}
+        onClose={() => setOpenDelete(false)}
+        onConfirm={() => {
+          setOportunidades((prev) => prev.filter((item) => item.id !== deleteId));
+        }}
+      />
+
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4">
         <span className="text-sm sm:text-md text-gray-900">Filtros:</span>
-
         <div className="flex gap-2">
           <select
             value={filtroCategoria}
@@ -125,7 +107,6 @@ function Tabela() {
         </div>
       </div>
 
-      {/* Tabela com scroll horizontal no mobile */}
       <div className="w-full mt-4 overflow-x-auto mx-0">
         <table className="w-full min-w-120 border-spacing-y-2">
           <thead>
@@ -147,13 +128,13 @@ function Tabela() {
                 </td>
                 <td className="px-3 sm:px-4 py-2 sm:py-3">
                   <div className="flex justify-center gap-2">
-                    <button 
-                      onClick={() => {setSelected(item); setOpen(true);}}
+                    <button
+                      onClick={() => { setSelected(item); setOpen(true); }}
                       className="p-1.5 sm:p-2 rounded-full border border-gray-700 bg-gray-700/10 hover:bg-gray-700/20 transition-colors duration-200">
                       <RiBallPenFill className="text-gray-700 text-sm sm:text-base" />
                     </button>
 
-                    <button 
+                    <button
                       onClick={() => handleDelete(item.id)}
                       className="p-1.5 sm:p-2 rounded-full border border-red-800 bg-red-800/20 hover:bg-red-800/30 transition-colors duration-200">
                       <RiDeleteBin6Line className="text-red-800 text-sm sm:text-base" />
