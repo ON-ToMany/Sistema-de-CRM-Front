@@ -44,28 +44,29 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, [usuario]);
 
   async function handleLogin(usuarioLogin: UsuarioLogin) {
-  setIsLoading(true);
-  try {
-    const resposta = await Login('/auth/login', usuarioLogin, () => {});
-    
-    console.log('Campos da resposta:', Object.keys(resposta)) // 👈 mostra todos os campos
+    setIsLoading(true);
+    try {
+      const resposta = await Login('/auth/login', usuarioLogin, () => {});
+      
+      console.log('Campos da resposta:', Object.keys(resposta))
 
-    setUsuario({
-      id: resposta.id,
-      nome: resposta.nome,
-      usuario: resposta.email,
-      senha: '',
-      tipo: resposta.tipo,        
-      access_token: resposta.access_token  
-    });
+      setUsuario({
+        id: resposta.id,
+        nome: resposta.nome,
+        usuario: resposta.email,
+        senha: '',  
+        tipo: resposta.tipo,        
+        access_token: resposta.token  // ✅ corrigido: era resposta.access_token
+      });
 
-    ToastAlerta('Usuário autenticado com sucesso!', 'sucesso');
-    isLogout.current = false;
-  } catch (error) {
-    ToastAlerta('Os dados do Usuário estão inconsistentes!', 'erro');
+      ToastAlerta('Usuário autenticado com sucesso!', 'sucesso');
+      isLogout.current = false;
+    } catch (error) {
+      ToastAlerta('Os dados do Usuário estão inconsistentes!', 'erro');
+    }
+    setIsLoading(false);
   }
-  setIsLoading(false);
-}
+
   function handleLogout() {
     isLogout.current = true;
     localStorage.removeItem('usuarioToken');
