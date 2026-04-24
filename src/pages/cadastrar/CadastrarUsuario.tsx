@@ -15,9 +15,7 @@ export default function CadastrarUsuario() {
     nome: "",
     senha: "",
     email: "", 
-    foto: "",
-    tipo: "",
-    cpf: ""
+    tipo: ""
   })
 
   const [isloading, setIsloading] = useState<boolean>(false)
@@ -88,19 +86,6 @@ export default function CadastrarUsuario() {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="cpf" className='text-[#0D542B] font-bold mb-1 ml-2'>CPF</label>
-          <input 
-            type="text" 
-            name="cpf"
-            placeholder='Digite seu CPF'
-            value={usuario.cpf} 
-            className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
-            onChange={atualizarEstado}
-            required
-          />
-        </div>
-
-        <div className="flex flex-col">
           <label htmlFor="tipo" className='text-[#0D542B] font-bold mb-1 ml-2'>Tipo</label>
           <select   
             name="tipo"
@@ -116,10 +101,12 @@ export default function CadastrarUsuario() {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="usuario" className='text-[#0D542B] font-bold mb-1 ml-2'>Email</label>
+          <label htmlFor="email" className='text-[#0D542B] font-bold mb-1 ml-2'>
+            Email
+          </label>
           <input 
             type="email" 
-            name="usuario"
+            name="email"
             placeholder='Digite seu email' 
             className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
             value={usuario.email} 
@@ -159,7 +146,7 @@ export default function CadastrarUsuario() {
           className='bg-[#135A33] cursor-pointer text-white font-bold py-3 rounded-full hover:bg-[#0a3d20] transition-colors flex justify-center items-center'
           disabled={isloading}
         >
-          {isloading ? <ClipLoader size={43}/> : 'Entrar'}
+          {isloading ? <ClipLoader size={43}/> : 'Cadastrar'}
         </button>
       </form>
       <p className="mt-4 text-black font-medium">
