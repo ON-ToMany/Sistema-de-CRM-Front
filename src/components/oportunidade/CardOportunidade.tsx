@@ -8,27 +8,45 @@ import { ToastAlerta } from '../../utils/ToastAlerta'
 export default function CardOportunidade() {
   const [isloading, setIsloading] = useState<boolean>(false)
   const [oportunidade, setOportunidade] = useState<Oportunidade>({} as Oportunidade)
-  const { handleLogout } = useContext(AuthContext)
+  
+  // Puxa o "usuario" e a função de deslogar do Contexto
+  const { handleLogout, usuario } = useContext(AuthContext)
 
   const atualizarEstado = (e: ChangeEvent<HTMLInputElement>) => {
     setOportunidade({ ...oportunidade, [e.target.name]: e.target.value })
   }
 
-  async function cadastrarOportunidade(e: SyntheticEvent<HTMLFormElement>) {
+async function cadastrarOportunidade(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault()
-    const gettoken = localStorage.getItem("usuario")
+    
+    const token = usuario.access_token
+
+    if (!token || token === "") {
+      ToastAlerta("Sessão inválida! O token sumiu. Faça login novamente.", "erro")
+      handleLogout()
+      return 
+    }
+
+    // 🔥 O SEGREDO: Verifica se o token já tem a palavra 'Bearer'
+    // Se tiver, usa do jeito que tá. Se não tiver, ele adiciona.
+    const tokenFormatado = token.startsWith('Bearer ') ? token : `Bearer ${token}`
+
     try {
       setIsloading(true)
       await cadastrar("oportunidades/cadastrar", oportunidade, setOportunidade, {
         headers: {
-          Authorization: `Bearer ${gettoken}`
+          Authorization: tokenFormatado // 👈 Usamos a variável inteligente aqui
         }
       })
-      ToastAlerta("Oportunidade cadastrada com sucesso!", "success")
+      ToastAlerta("Oportunidade cadastrada com sucesso!", "sucesso")
+      setOportunidade({} as Oportunidade)
+
     } catch (error: any) {
+      console.error("Resposta de erro da API:", error.response?.data || error.message);
+
       if (error.toString().includes('401')) {
         handleLogout()
-        ToastAlerta("Usuário deve estar logado", "erro")
+        ToastAlerta("Sessão expirada. Faça login novamente.", "erro")
       } else {
         ToastAlerta("Erro ao cadastrar oportunidade", "erro")
       }

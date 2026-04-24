@@ -12,9 +12,9 @@ const Sidebar = () => {
   const { handleLogout } = useContext(AuthContext);
 
   const navItems = [
-    { name: 'Inicio', path: '/dashboard-cliente', icon: Home },
-    { name: 'Cadastrar', path: '/dashboard-cliente', icon: Plus },
-    { name: 'Listar Todas', path: '/listar-oportunidades', icon: Plus },
+    { name: 'Inicio', path: '/dashboard', icon: Home },
+    { name: 'Cadastrar', path: '/oportunidades', icon: Plus },
+    { name: 'Listar Todas', path: '/listar', icon: Plus },
   ];
 
   function logout() {

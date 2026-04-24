@@ -13,6 +13,7 @@ import CardOportunidade from "./components/oportunidade/CardOportunidade";
 import { ToastContainer } from 'react-toastify';
 import DashboardEmpresa from "./pages/gerenciarempresa/DashboardEmpresa";
 import Dashboard from "./pages/dashboard/Dashboard";
+import OpportunityTable from "./components/dashboard/Opportunity";
 import ListarOportunidades from "./pages/listaroportunidades/ListarOportunidades";
 
 function App() {
