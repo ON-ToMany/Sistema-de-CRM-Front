@@ -35,7 +35,7 @@ function App() {
           <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
           <Route path="/dashboard-cliente" element={<Dashboard />} />
           <Route path="/listar-oportunidades" element={<ListarOportunidades />} />
-          <Route path="/cadastrar-oportunidade" element={<CardOportunidade/>} /
+          <Route path="/cadastrar-oportunidade" element={<CardOportunidade/>} />
         </Route>
         </Routes>
       </BrowserRouter>

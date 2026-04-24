@@ -1,10 +1,9 @@
 
 export default interface Usuario {
     id: number;
-    tipo:string;
     nome: string;
-    cpf:string;
     email: string; 
     senha: string;  
+    tipo: string;
     oportunidades?: any[];
 }
