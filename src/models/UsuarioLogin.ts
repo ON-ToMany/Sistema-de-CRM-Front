@@ -1,8 +1,8 @@
 export default interface UsuarioLogin {
     id: number;
     nome: string;
-    usuario: string;
+    usuario: string;  
     senha: string;
-    foto: string;
-    token: string; 
+    tipo: 'empresa' | 'cliente' | '';
+    access_token: string;
 }

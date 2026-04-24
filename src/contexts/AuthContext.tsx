@@ -1,7 +1,7 @@
 import { createContext, useRef, useState, useEffect, type ReactNode, type Dispatch, type SetStateAction } from "react";
 import type UsuarioLogin from "../models/UsuarioLogin";
-import { ToastAlerta } from "../utils/ToastAlerta"; 
-import { Login } from "../services/Service";
+import { ToastAlerta } from "../utils/ToastAlerta";
+import { Login } from "../services/Service"; 
 
 interface AuthContextProps {
   usuario: UsuarioLogin
@@ -9,7 +9,7 @@ interface AuthContextProps {
   handleLogin(usuario: UsuarioLogin): Promise<void>
   isLoading: boolean
   isLogout: boolean
-  setUsuario: Dispatch<SetStateAction<UsuarioLogin>> 
+  setUsuario: Dispatch<SetStateAction<UsuarioLogin>>
 }
 
 interface AuthProviderProps {
@@ -20,66 +20,66 @@ export const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthProvider({ children }: AuthProviderProps) {
 
-  // 1. Inicializa tentando ler o que já foi salvo anteriormente
+  const estadoInicial: UsuarioLogin = {
+    id: 0,
+    nome: "",
+    usuario: "",
+    senha: "",
+    tipo: '',
+    access_token: ""
+  }
+
   const [usuario, setUsuario] = useState<UsuarioLogin>(() => {
     const usuarioPersistido = localStorage.getItem('usuarioToken');
-    return usuarioPersistido ? JSON.parse(usuarioPersistido) : {
-      id: 0,
-      nome: "",
-      usuario: "",
-      senha: "",
-      foto: "",
-      token: ""
-    };
+    return usuarioPersistido ? JSON.parse(usuarioPersistido) : estadoInicial;
   });
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const isLogout = useRef(false);
 
-  // 2. Salva automaticamente sempre que o usuário logar
   useEffect(() => {
-    if (usuario.token !== "") {
+    if (usuario.access_token !== "") {
       localStorage.setItem('usuarioToken', JSON.stringify(usuario));
     }
   }, [usuario]);
 
   async function handleLogin(usuarioLogin: UsuarioLogin) {
-    setIsLoading(true);
-    try {
-      // CORREÇÃO: '/auth/login' (estava 'auht')
-      await Login('/auth/login', usuarioLogin, setUsuario);
-      
-      ToastAlerta('Usuário autenticado com sucesso!', 'sucesso');
-      isLogout.current = false;
+  setIsLoading(true);
+  try {
+    const resposta = await Login('/auth/login', usuarioLogin, () => {});
+    
+    console.log('Campos da resposta:', Object.keys(resposta)) // 👈 mostra todos os campos
 
-    } catch (error) {
-      console.log(error);
-      ToastAlerta('Os dados do Usuário estão inconsistentes!', 'erro');
-    }
-    setIsLoading(false);
+    setUsuario({
+      id: resposta.id,
+      nome: resposta.nome,
+      usuario: resposta.email,
+      senha: '',
+      tipo: resposta.tipo,        
+      access_token: resposta.access_token  
+    });
+
+    ToastAlerta('Usuário autenticado com sucesso!', 'sucesso');
+    isLogout.current = false;
+  } catch (error) {
+    ToastAlerta('Os dados do Usuário estão inconsistentes!', 'erro');
   }
-
+  setIsLoading(false);
+}
   function handleLogout() {
     isLogout.current = true;
-    localStorage.removeItem('usuarioToken'); // Limpa a memória ao sair
-    setUsuario({
-      id: 0,
-      nome: "",
-      usuario: "",
-      senha: "",
-      foto: "",
-      token: ""
-    })
+    localStorage.removeItem('usuarioToken');
+    setUsuario(estadoInicial);
   }
 
   return (
-    <AuthContext.Provider value={{ 
-      usuario, 
-      handleLogin, 
-      handleLogout, 
-      isLoading, 
-      isLogout: isLogout.current, 
-      setUsuario 
+    <AuthContext.Provider value={{
+      usuario,
+      handleLogin,
+      handleLogout,
+      isLoading,
+      isLogout: isLogout.current,
+      setUsuario
     }}>
       {children}
     </AuthContext.Provider>
