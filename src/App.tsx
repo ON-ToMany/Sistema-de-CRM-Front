@@ -11,7 +11,7 @@ import LoginUsuario from "./pages/Login/Login";
 import CadastrarUsuario from "./pages/cadastrar/CadastrarUsuario";
 import CardOportunidade from "./components/oportunidade/CardOportunidade";
 import { ToastContainer } from 'react-toastify';
-
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
             <Route path="/cadastrar" element={<CadastrarUsuario />} />
             <Route path="/oportunidadeCadastro" element={<CardOportunidade />} />
             <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
-           
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </div>
 
