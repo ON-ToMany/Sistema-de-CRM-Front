@@ -13,24 +13,44 @@ const Dashboard: React.FC = () => {
   const [oportunidades, setOportunidades] = useState<Oportunidade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { usuario, handleLogout } = useContext(AuthContext);
+  
+  // Pegamos o que está no localStorage
+  const usuarioStorage = localStorage.getItem('usuario');
 
   useEffect(() => {
-    if (usuario.access_token === '') {
+    // Melhor validação para ver se o localStorage está vazio ou nulo
+    if (!usuarioStorage || usuarioStorage.trim() === '') {
       ToastAlerta('Você precisa estar logado!', 'info');
-      // No logout here yet, let the user decide or use a navigate
+      // handleLogout() ou navigate('/login') seria ideal aqui
     } else {
       fetchOportunidades();
     }
-  }, [usuario.access_token]);
+  }, [usuarioStorage]);
 
   async function fetchOportunidades() {
     setIsLoading(true);
+
+    // 1. Lógica para extrair o token do LocalStorage de forma segura
+    let tokenFormatado = '';
     try {
+      // Se for um JSON (objeto com vários dados do usuário)
+      const usuarioObj = JSON.parse(usuarioStorage as string);
+      const token = usuarioObj.token || usuarioStorage; 
+      tokenFormatado = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
+    } catch (error) {
+      // Se já for apenas a string do token direto
+      const token = usuarioStorage as string;
+      tokenFormatado = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
+    }
+
+    try {
+      // 2. Enviando o token formatado no Header
       await buscar('/oportunidades/todas', setOportunidades, {
-        headers: { Authorization: usuario.access_token },
+        headers: { Authorization: tokenFormatado },
       });
     } catch (error: any) {
       if (error.toString().includes('401')) {
+        ToastAlerta('Sessão expirada. Faça login novamente.', 'info');
         handleLogout();
       } else {
         ToastAlerta('Erro ao carregar dados do dashboard', 'erro');
@@ -41,18 +61,18 @@ const Dashboard: React.FC = () => {
   }
 
   // Filtragem de dados
-  const ativas = oportunidades.filter(
-    (op) => op.status.toLowerCase() === 'pendente' || op.status.toLowerCase() === 'processando'
+  const ativas = (oportunidades || []).filter(
+    (op) => op.status?.toLowerCase() === 'pendente' || op.status?.toLowerCase() === 'processando'
   );
 
-  const finalizadas = oportunidades.filter(
-    (op) => op.status.toLowerCase() === 'finalizado'
+  const finalizadas = (oportunidades || []).filter(
+    (op) => op.status?.toLowerCase() === 'finalizado'
   );
 
   // Cálculo de impacto
-  const co2Total = oportunidades.reduce((acc, curr) => acc + (curr.co2Economizado || 0), 0);
-  const recicladosTotal = oportunidades.filter((op) => op.categoria?.toLowerCase() === 'reciclado').length;
-  const reusosTotal = oportunidades.filter((op) => op.categoria?.toLowerCase() === 'reutilizado').length;
+  const co2Total = (oportunidades || []).reduce((acc, curr) => acc + (curr.co2Economizado || 0), 0);
+  const recicladosTotal = (oportunidades || []).filter((op) => op.categoria?.toLowerCase() === 'reciclado').length;
+  const reusosTotal = (oportunidades || []).filter((op) => op.categoria?.toLowerCase() === 'reutilizado').length;
 
   return (
     <div className="flex min-h-screen bg-[#F3F4F6]">
