@@ -11,7 +11,7 @@ import LoginUsuario from "./pages/Login/Login";
 import CadastrarUsuario from "./pages/cadastrar/CadastrarUsuario";
 import CardOportunidade from "./components/oportunidade/CardOportunidade";
 import { ToastContainer } from 'react-toastify';
-import DashboardEmpresa from "./pages/dashboard/DashboardEmpresa";
+import DashboardEmpresa from "./pages/gerenciarempresa/DashboardEmpresa";
 import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
           <Route path="/oportunidades" element={<><Navbar/><CardOportunidade/><Footer/></>} />
           <Route path="/dashboard-empresa" element={<GerenciarEmpresa />} />
           <Route path="/dashboard-cliente" element={<Dashboard />} />
-          <Route path="/dashboard-empresa(maria vai ajustar caminho)" element={<DashboardEmpresa/>} />
+          <Route path="/dashboard-empresa(maria vai ajustar caminho depois)" element={<DashboardEmpresa/>} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

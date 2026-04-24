@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { RiHome2Line, RiAddFill } from "react-icons/ri";
-import Tabela from '../gerenciarempresa/components/tabela/Tabela';
+import Tabela from './components/tabela/Tabela';
 import Logo from "../../assets/logo GreenTech.png";
 import iconeCO2 from "../../assets/simbolo CO2.png.png";
 import iconeRecicle from "../../assets/simbolo recicle.png";
@@ -12,11 +12,6 @@ const DashboardEmpresa: FC = () => {
   const { usuario } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // if (usuario.token === "") {
-    //   navigate('/login');
-    // }
-  }, [usuario.token, navigate]);
 return (
     <div className="flex flex-row h-screen bg-[#E9ECEF] w-full overflow-hidden font-sans">
       <aside className="group w-20 hover:w-64 h-full bg-[#E4EBE4] border-r border-[#0D542B] flex flex-col p-6 shadow-sm rounded-tr-[50px] rounded-br-[50px] z-10 transition-all duration-500 ease-in-out overflow-hidden">
