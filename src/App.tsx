@@ -1,8 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/home/Home";
-import Ticker from "./components/ticker/Ticker";
-import Footer from "./components/footer/Footer";
 import Parceria from "./pages/parceria/Parceria";
 import Quemsomos from "./pages/quemsomos/Quemsomos";
 import GerenciarEmpresa from "./pages/gerenciarempresa/GerenciarEmpresa";
@@ -13,6 +10,8 @@ import CardOportunidade from "./components/oportunidade/CardOportunidade";
 import { ToastContainer } from 'react-toastify';
 import DashboardEmpresa from "./pages/gerenciarempresa/DashboardEmpresa";
 import Dashboard from "./pages/dashboard/Dashboard";
+import PublicLayout from "./components/layouts/layoutpublico/LayoutPublico";
+import DashboardLayout from "./components/layouts/layoutdashboard/LayoutDashboards";
 
 function App() {
   return (
@@ -20,16 +19,21 @@ function App() {
       <ToastContainer/>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<><Navbar/><Home/><Ticker/><Footer/></>} />
-          <Route path="/inicio" element={<><Navbar/><Home/><Ticker/><Footer/></>} />
-          <Route path="/Parceria" element={<><Navbar/><Parceria/><Ticker/><Footer/></>} />
-          <Route path="/Sobre" element={<><Navbar/><Quemsomos/><Ticker/><Footer/></>} />
-          <Route path="/Login" element={<><Navbar/><LoginUsuario/><Footer/></>} />
-          <Route path="/cadastrar" element={<><Navbar/><CadastrarUsuario/><Footer/></>} />
-          <Route path="/oportunidades" element={<><Navbar/><CardOportunidade/><Footer/></>} />
-          <Route path="/dashboard-empresa" element={<GerenciarEmpresa />} />
+          <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home/>} />
+          <Route path="/inicio" element={<Home/>} />
+          <Route path="/Parceria" element={<Parceria/>} />
+          <Route path="/Sobre" element={<Quemsomos/>} />
+          <Route path="/Login" element={<LoginUsuario/>} />
+          <Route path="/cadastrar" element={<CadastrarUsuario/>} />
+        </Route>
+
+        <Route element={<DashboardLayout />}>
+          <Route path="/dashboard-empresa" element={<DashboardEmpresa/>} />
+          <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
           <Route path="/dashboard-cliente" element={<Dashboard />} />
-          <Route path="/dashboard-empresa(maria vai ajustar caminho depois)" element={<DashboardEmpresa/>} />
+          <Route path="/oportunidades" element={<CardOportunidade/>} />
+        </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
