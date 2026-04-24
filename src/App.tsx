@@ -13,6 +13,7 @@ import CardOportunidade from "./components/oportunidade/CardOportunidade";
 import { ToastContainer } from 'react-toastify';
 import DashboardEmpresa from "./pages/gerenciarempresa/DashboardEmpresa";
 import Dashboard from "./pages/dashboard/Dashboard";
+import ListarOportunidades from "./pages/listaroportunidades/ListarOportunidades";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/oportunidades" element={<><Navbar/><CardOportunidade/><Footer/></>} />
           <Route path="/dashboard-empresa" element={<GerenciarEmpresa />} />
           <Route path="/dashboard-cliente" element={<Dashboard />} />
+          <Route path="/listar-oportunidades" element={<ListarOportunidades />} />
           <Route path="/dashboard-empresa(maria vai ajustar caminho depois)" element={<DashboardEmpresa/>} />
         </Routes>
       </BrowserRouter>

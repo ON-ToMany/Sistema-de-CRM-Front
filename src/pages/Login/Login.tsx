@@ -54,7 +54,7 @@ export default function LoginUsuario() {
             type="text"
             id="usuario"
             name="usuario"
-            value={usuarioLogin.email ?? ''}
+            value={usuarioLogin.email}
             placeholder="Digite seu email"
             className="w-full h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B] bg-white"
             onChange={atualizarEstado}
