@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "../../assets/icons/logoescrita-crm.png";
+import Logo from "./../../assets/icons/logoescrita-crm.png";
 import { Link, useLocation } from "react-router-dom";
 import { RiUser3Fill } from "react-icons/ri";
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Home, Plus } from 'lucide-react';
-import logoEscritaCrm from '../../assets/img/logoescrita-crm.png';
+import logoEscritaCrm from '../../assets/icons/logoescrita-crm.png';
 
 const Sidebar = () => {
   const navItems = [
