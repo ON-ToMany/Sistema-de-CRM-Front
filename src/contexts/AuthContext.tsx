@@ -1,6 +1,6 @@
 import { createContext, useRef, useState, useEffect, type ReactNode, type Dispatch, type SetStateAction } from "react";
 import type UsuarioLogin from "../models/UsuarioLogin";
-import { ToastAlerta } from "../utils/ToastAlerta"; 
+import { ToastAlerta } from "../utils/ToastAlerta";
 import { Login } from "../services/Service";
 
 interface AuthContextProps {
@@ -9,7 +9,7 @@ interface AuthContextProps {
   handleLogin(usuario: UsuarioLogin): Promise<void>
   isLoading: boolean
   isLogout: boolean
-  setUsuario: Dispatch<SetStateAction<UsuarioLogin>> 
+  setUsuario: Dispatch<SetStateAction<UsuarioLogin>>
 }
 
 interface AuthProviderProps {
@@ -19,7 +19,6 @@ interface AuthProviderProps {
 export const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthProvider({ children }: AuthProviderProps) {
-
   // 1. Inicializa tentando ler o que já foi salvo anteriormente
   const [usuario, setUsuario] = useState<UsuarioLogin>(() => {
     const usuarioPersistido = localStorage.getItem('usuarioToken');
@@ -29,7 +28,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       usuario: "",
       senha: "",
       foto: "",
-      token: ""
+      access_token: ""
     };
   });
 
@@ -49,8 +48,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
       // CORREÇÃO: '/auth/login' (estava 'auht')
       await Login('/auth/login', usuarioLogin, setUsuario);
 
+     const resposta =  await Login('/auth/login', usuarioLogin, setUsuario);
       ToastAlerta('Usuário autenticado com sucesso!', 'sucesso');
       isLogout.current = false;
+      localStorage.setItem('usuario',resposta.access_token)
 
     } catch (error) {
       console.log(error);
@@ -64,21 +65,21 @@ function handleLogout() {
     setUsuario({
       id: 0,
       nome: "",
-      usuario: "",
+      email: "",
       senha: "",
       foto: "",
-      token: ""
+      access_token: ""
     })
   }
 
   return (
-    <AuthContext.Provider value={{ 
-      usuario, 
-      handleLogin, 
-      handleLogout, 
-      isLoading, 
-      isLogout: isLogout.current, 
-      setUsuario 
+    <AuthContext.Provider value={{
+      usuario,
+      handleLogin,
+      handleLogout,
+      isLoading,
+      isLogout: isLogout.current,
+      setUsuario
     }}>
       {children}
     </AuthContext.Provider>

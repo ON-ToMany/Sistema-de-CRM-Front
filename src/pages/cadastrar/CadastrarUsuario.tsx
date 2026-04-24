@@ -14,7 +14,7 @@ export default function CadastrarUsuario() {
     id: 0,
     nome: "",
     senha: "",
-    usuario: "", 
+    email: "", 
     foto: "",
     tipo: "",
     cpf: ""
@@ -122,7 +122,7 @@ export default function CadastrarUsuario() {
             name="usuario"
             placeholder='Digite seu email' 
             className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
-            value={usuario.usuario} 
+            value={usuario.email} 
             onChange={atualizarEstado}
             required
           />
