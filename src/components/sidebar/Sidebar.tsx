@@ -15,8 +15,8 @@ const Sidebar = () => {
 
   const navItems = [
     { name: 'Inicio', path: '/dashboard', icon: Home },
-    { name: 'Cadastrar', path: '/dashboard/cadastrar', icon: Plus },
-    { name: 'Listar Todas', path: '/dashboard/listar', icon: Plus },
+    { name: 'Cadastrar', path: '/oportunidades', icon: Plus },
+    { name: 'Listar Todas', path: '/listar', icon: Plus },
   ];
 
   // 4. Crie a função que vai executar o logout e mudar a rota
