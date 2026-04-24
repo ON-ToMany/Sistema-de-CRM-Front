@@ -12,6 +12,15 @@ interface Oportunidade {
   status: Status;
 }
 
+const dados: Oportunidade[] = [
+  { id: 1, nome: "Celular exemplo", categoria: "reuso", status: "Pendente" },
+  { id: 2, nome: "Celular exemplo", categoria: "reuso", status: "Processando" },
+  { id: 3, nome: "Celular exemplo", categoria: "reciclagem", status: "Finalizado" },
+  { id: 4, nome: "Celular exemplo", categoria: "reuso", status: "Pendente" },
+  { id: 5, nome: "Celular exemplo", categoria: "reuso", status: "Processando" },
+  { id: 6, nome: "Computador exemplo", categoria: "reciclagem", status: "Finalizado" },
+];
+
 function Tabela() {
   const [oportunidades, setOportunidades] = useState<Oportunidade[]>([]);
   const [filtroStatus, setFiltroStatus] = useState<Status | "">("");

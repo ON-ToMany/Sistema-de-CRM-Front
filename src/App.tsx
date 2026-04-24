@@ -11,35 +11,29 @@ import LoginUsuario from "./pages/Login/Login";
 import CadastrarUsuario from "./pages/cadastrar/CadastrarUsuario";
 import CardOportunidade from "./components/oportunidade/CardOportunidade";
 import { ToastContainer } from 'react-toastify';
+import DashboardEmpresa from "./pages/dashboard/DashboardEmpresa";
 import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   return (
-
     <AuthProvider>
-      <ToastContainer />
+      <ToastContainer/>
       <BrowserRouter>
-
-        <Navbar />
-        <div className="flex flex-col min-h-screen">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/inicio" element={<Home />} />
-            <Route path="/Parceria" element={<Parceria />} />
-            <Route path="/Sobre" element={<Quemsomos />} />
-            <Route path="/Login" element={<LoginUsuario />} />
-            <Route path="/cadastrar" element={<CadastrarUsuario />} />
-            <Route path="/oportunidadeCadastro" element={<CardOportunidade />} />
-            <Route path="/dashboard-empresa" element={<GerenciarEmpresa />} />
-            <Route path="/dashboard-cliente" element={<Dashboard />} />
-          </Routes>
-        </div>
-
-        <Ticker />
-        <Footer />
-
+        <Routes>
+          <Route path="/" element={<><Navbar/><Home/><Ticker/><Footer/></>} />
+          <Route path="/inicio" element={<><Navbar/><Home/><Ticker/><Footer/></>} />
+          <Route path="/Parceria" element={<><Navbar/><Parceria/><Ticker/><Footer/></>} />
+          <Route path="/Sobre" element={<><Navbar/><Quemsomos/><Ticker/><Footer/></>} />
+          <Route path="/Login" element={<><Navbar/><LoginUsuario/><Footer/></>} />
+          <Route path="/cadastrar" element={<><Navbar/><CadastrarUsuario/><Footer/></>} />
+          <Route path="/oportunidades" element={<><Navbar/><CardOportunidade/><Footer/></>} />
+          <Route path="/dashboard-empresa" element={<GerenciarEmpresa />} />
+          <Route path="/dashboard-cliente" element={<Dashboard />} />
+          <Route path="/dashboard-empresa(maria vai ajustar caminho)" element={<DashboardEmpresa/>} />
+        </Routes>
       </BrowserRouter>
     </AuthProvider>
-  );
+  )
 }
+
 export default App;
