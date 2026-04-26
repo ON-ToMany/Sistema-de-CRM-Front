@@ -12,7 +12,6 @@ import DashboardEmpresa from "./pages/gerenciarempresa/DashboardEmpresa";
 import Dashboard from "./pages/dashboard/Dashboard";
 import PublicLayout from "./components/layouts/layoutpublico/LayoutPublico";
 import DashboardLayout from "./components/layouts/layoutdashboard/LayoutDashboards";
-import OpportunityTable from "./components/dashboard/Opportunity";
 import ListarOportunidades from "./pages/listaroportunidades/ListarOportunidades";
 
 function App() {

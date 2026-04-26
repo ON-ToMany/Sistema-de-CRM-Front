@@ -1,14 +1,9 @@
-import { useContext } from 'react';
 import type { FC } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
-import { useNavigate } from 'react-router-dom';
 import Tabela from './components/tabela/Tabela';
 import iconeCO2 from "../../assets/simbolo CO2.png.png";
 import iconeRecicle from "../../assets/simbolo recicle.png";
 
 const DashboardEmpresa: FC = () => {
-  const { usuario } = useContext(AuthContext);
-  const navigate = useNavigate();
 
 return (
     <div className="flex flex-row h-screen bg-[#E9ECEF] w-full overflow-hidden font-sans">
