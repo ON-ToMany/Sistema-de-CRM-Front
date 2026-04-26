@@ -12,6 +12,10 @@ interface Oportunidade {
   status: Status;
 }
 
+interface TabelaProps {
+  statusFixo?: Status[];
+}
+
 const dados: Oportunidade[] = [
   { id: 1, equipamento: "Celular exemplo", categoria: "reuso", status: "Pendente" },
   { id: 2, equipamento: "Notebook exemplo", categoria: "reuso", status: "Processando" },
@@ -21,7 +25,7 @@ const dados: Oportunidade[] = [
   { id: 6, equipamento: "Computador exemplo", categoria: "reciclagem", status: "Finalizado" },
 ];
 
-function Tabela() {
+function Tabela({ statusFixo }: TabelaProps) {
   const [oportunidades, setOportunidades] = useState<Oportunidade[]>([]);
   const [filtroStatus, setFiltroStatus] = useState<Status | "">("");
   const [filtroCategoria, setFiltroCategoria] = useState<string>("");
@@ -36,6 +40,7 @@ function Tabela() {
 
   const dadosFiltrados = oportunidades.filter((item) => {
     return (
+      (statusFixo ? statusFixo.includes(item.status) : true) &&
       (filtroStatus === "" || item.status === filtroStatus) &&
       (filtroCategoria === "" || item.categoria === filtroCategoria)
     );
@@ -94,16 +99,18 @@ function Tabela() {
             <option value="reciclagem">Reciclagem</option>
           </select>
 
-          <select
-            value={filtroStatus}
-            onChange={(e) => setFiltroStatus(e.target.value as Status)}
-            className="flex-1 sm:flex-none bg-green-900 text-gray-100 text-sm px-2 py-1 rounded-full cursor-pointer hover:bg-green-800 focus:bg-green-800 focus:outline-none focus:ring-1 focus:ring-green-950"
-          >
-            <option value="">Status</option>
-            <option value="Pendente">Pendente</option>
-            <option value="Processando">Processando</option>
-            <option value="Finalizado">Finalizado</option>
-          </select>
+          {!statusFixo && (
+            <select
+              value={filtroStatus}
+              onChange={(e) => setFiltroStatus(e.target.value as Status)}
+              className="flex-1 sm:flex-none bg-green-900 text-gray-100 text-sm px-2 py-1 rounded-full cursor-pointer hover:bg-green-800 focus:bg-green-800 focus:outline-none focus:ring-1 focus:ring-green-950"
+            >
+              <option value="">Status</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Processando">Processando</option>
+              <option value="Finalizado">Finalizado</option>
+            </select>
+          )}
         </div>
       </div>
 

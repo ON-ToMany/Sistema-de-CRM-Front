@@ -21,20 +21,14 @@ return (
             <h2 className="text-lg text-[#1A3321] font-bold mb-4 text-left">
               Oportunidades ativas (pendente + processando)
             </h2>
-            
-            <div className="[&_tr:has(span:contains('Finalizado'))]:hidden">
-               <Tabela />
-            </div>
+            <Tabela statusFixo={["Pendente", "Processando"]} />
           </section>
 
           <section className="bg-[#E4EBE4]/60 p-6 rounded-[35px] border border-[#B5BEB5]">
             <h2 className="text-lg text-[#1A3321] font-bold mb-4 text-left">Finalizadas</h2>
-            
-            <div className="[&_tr:not(:has(span:contains('Finalizado')))]:hidden [&_thead]:table-header-group [&_tr:first-child]:table-row">
-               <Tabela />
-            </div>
+            <Tabela statusFixo={["Finalizado"]} />
           </section>
-
+          
           <section className="w-full mt-4">
             <div className="relative flex items-center mb-8">
               <div className="grow border-t border-[#B5BEB5]"></div>
