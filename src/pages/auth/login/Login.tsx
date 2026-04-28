@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, type ChangeEvent, type SyntheticEvent } from "react"
-import type UsuarioLogin from "../../models/UsuarioLogin"
-import { AuthContext } from "../../contexts/AuthContext"
+import type UsuarioLogin from "../../../models/UsuarioLogin"
+import { AuthContext } from "../../../contexts/AuthContext"
 import { Link, useNavigate } from "react-router-dom"
 
 export default function LoginUsuario() {

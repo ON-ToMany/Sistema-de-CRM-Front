@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import Tabela from './components/tabela/Tabela';
+import Tabela from '../../../components/tabela/Tabela';
 import iconeCO2 from "../../assets/simbolo CO2.png.png";
 import iconeRecicle from "../../assets/simbolo recicle.png";
 

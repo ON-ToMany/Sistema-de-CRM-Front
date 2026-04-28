@@ -1,4 +1,4 @@
-import { Tag, type Status } from "../../../../components/tag/Tag";
+import { Tag, type Status } from "../tag/Tag";
 import { RiBallPenFill } from "react-icons/ri";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { useEffect, useState } from "react";

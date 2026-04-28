@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Sidebar from '../../components/sidebar/Sidebar';
+import Sidebar from '../../components/layouts/layoutdashboard/sidebar/Sidebar';
 import { AuthContext } from '../../contexts/AuthContext';
 import { buscar } from '../../services/Service';
 import type { Oportunidade } from '../../models/Oportunidade';

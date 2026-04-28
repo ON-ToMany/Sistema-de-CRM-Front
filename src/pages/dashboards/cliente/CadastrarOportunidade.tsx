@@ -1,9 +1,9 @@
 import { useContext, useState, type ChangeEvent, type SyntheticEvent } from 'react'
-import type { Oportunidade } from '../../models/Oportunidade'
+import type { Oportunidade } from '../../../models/Oportunidade'
 import { ClipLoader } from 'react-spinners'
-import { cadastrar } from '../../services/Service'
-import { AuthContext } from '../../contexts/AuthContext'
-import { ToastAlerta } from '../../utils/ToastAlerta'
+import { cadastrar } from '../../../services/Service'
+import { AuthContext } from '../../../contexts/AuthContext'
+import { ToastAlerta } from '../../../utils/ToastAlerta'
 
 export default function CardOportunidade() {
   const [isloading, setIsloading] = useState<boolean>(false)

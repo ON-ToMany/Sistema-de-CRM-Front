@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Home, Plus, Settings } from 'lucide-react';
 import logoEscritaCrm from '../../assets/icons/logoescrita-crm.png';
-import { AuthContext } from '../../contexts/AuthContext';
+import { AuthContext } from '../../../../contexts/AuthContext';
 
 const Sidebar = () => {
   const { usuario, handleLogout } = useContext(AuthContext);

@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Sidebar from '../../components/sidebar/Sidebar';
-import HeaderDashboard from '../../components/headerdashboard/HeaderDashboard';
-import ImpactCards from '../../components/dashboard/impactCards';
-import OpportunityTable from '../../components/dashboard/Opportunity';
-import { AuthContext } from '../../contexts/AuthContext';
-import { buscar } from '../../services/Service';
-import type { Oportunidade } from '../../models/Oportunidade';
+import Sidebar from '../../../components/layouts/layoutdashboard/sidebar/Sidebar';
+import ImpactCards from '../../../components/impactcards/impactCards';
+import OpportunityTable from '../../../components/oportunidade/Opportunity';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { buscar } from '../../../services/Service';
+import type { Oportunidade } from '../../../models/Oportunidade';
 import { ClipLoader } from 'react-spinners';
-import { ToastAlerta } from '../../utils/ToastAlerta';
+import { ToastAlerta } from '../../../utils/ToastAlerta';
 
 const Dashboard: React.FC = () => {
   const [oportunidades, setOportunidades] = useState<Oportunidade[]>([]);
@@ -61,8 +60,6 @@ const Dashboard: React.FC = () => {
     <div className="flex min-h-screen bg-[#F3F4F6]">
       <Sidebar />
       <main className="flex-1 ml-64 p-10 overflow-y-auto">
-        <HeaderDashboard />
-
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
             <ClipLoader size={50} color="#135A33" />

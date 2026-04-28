@@ -1,10 +1,10 @@
 
 
 import { useEffect, useState, type ChangeEvent} from 'react'
-import { usuarioCadastrar } from '../../services/Service'
+import { usuarioCadastrar } from '../../../services/Service'
 import { useNavigate, Link } from 'react-router-dom' 
-import type Usuario from '../../models/Usuario'
-import { ToastAlerta } from '../../utils/ToastAlerta'
+import type Usuario from '../../../models/Usuario'
+import { ToastAlerta } from '../../../utils/ToastAlerta'
 import { ClipLoader } from "react-spinners";
 
 export default function CadastrarUsuario() {
