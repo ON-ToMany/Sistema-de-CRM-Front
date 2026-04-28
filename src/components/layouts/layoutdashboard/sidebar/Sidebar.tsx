@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Home, Plus, Settings } from 'lucide-react';
-import logoEscritaCrm from '../../../../assets/icons/logo-greentech.png';
+import logoEscritaCrm from '../../../../assets/icons/logoescrita-crm.png';
 import { AuthContext } from '../../../../contexts/AuthContext';
 
-const Sidebar = () => {
+function Sidebar() {
   const { usuario, handleLogout } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -27,19 +27,15 @@ const Sidebar = () => {
   }
 
   return (
-    <aside className="w-64 h-screen bg-[#C4D1C9] flex flex-col fixed left-0 top-0 border-r border-[#AAB7AF] rounded-r-[40px] z-50">    
-      {/* Logo */}
-      <div className="p-8 flex items-center">
-        <img src={logoEscritaCrm} alt="Greentech CRM Logo" className="h-16 w-auto object-contain" />
+    <aside className="w-fit h-screen bg-green-800/20 flex flex-col fixed border-r border-t border-b border-green-800 rounded-r-4xl p-6 gap-6 shadow-md">    
+  
+      <div className="p-4 flex items-center">
+        <img src={logoEscritaCrm} alt="Greentech CRM Logo" className="h-14 w-auto object-contain" />
       </div>
-      
-      {/* Saudação com nome do usuário */}
-      <div className="px-8 pb-2">
-        <p className="text-[#114232] font-semibold text-sm">Olá,</p>
-        <p className="text-[#114232] font-bold text-base truncate">{usuario.nome}</p>
-      </div>
+
+      <hr className='text-black/20' />
         
-      <nav className="flex-1 mt-10 px-6 space-y-6">
+      <nav className="flex-1 px-4">
         {navItems.map((item) => (
           <NavLink
             key={item.name}
@@ -47,8 +43,8 @@ const Sidebar = () => {
             className={({ isActive }) =>
               `flex items-center gap-4 px-4 py-2 transition-all duration-200 group ${
                 isActive
-                  ? 'text-[#114232] font-bold'
-                  : 'text-[#114232] font-semibold opacity-80 hover:opacity-100'
+                  ? 'text-green-900 font-bold'
+                  : 'text-black font-semibold opacity-80 hover:opacity-100'
               }`
             }
           >
@@ -59,16 +55,16 @@ const Sidebar = () => {
       </nav>
 
       {/* Botão Sair */}
-      <div className="p-8 mt-auto">
+      <div className="p-4">
         <button
           onClick={sair}
-          className="w-full bg-[#114232] text-white font-bold py-3 px-6 rounded-full text-xl hover:bg-[#0c3125] transition-colors shadow-md cursor-pointer"
+          className="w-full bg-green-800 border border-green-950 text-gray-200 font-bold py-2 px-6 rounded-full text-xl hover:bg-green-950 transition-colors shadow-md cursor-pointer"
         >
           SAIR
         </button>
       </div>
     </aside>
-  );
-};
+  )
+}
 
 export default Sidebar;
