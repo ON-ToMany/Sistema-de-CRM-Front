@@ -4,6 +4,7 @@ import { ClipLoader } from 'react-spinners'
 import { cadastrar } from '../../../services/Service'
 import { AuthContext } from '../../../contexts/AuthContext'
 import { ToastAlerta } from '../../../utils/ToastAlerta'
+import ContainerDashboard from '../../../components/containerdashboard/ContainerDashboard'
 
 export default function CardOportunidade() {
   const [isloading, setIsloading] = useState<boolean>(false)
@@ -56,13 +57,8 @@ async function cadastrarOportunidade(e: SyntheticEvent<HTMLFormElement>) {
   }
 
   return (
-    <div className='flex justify-center items-center w-full min-h-screen bg-white p-4'>
-      <div className='bg-[#E4EBE5] w-full max-w-4xl rounded-[40px] p-8 md:p-12 shadow-sm'>
+      <ContainerDashboard nome='cliente' tipo='cliente'>
         
-        <h1 className='text-2xl font-bold text-gray-800'>Olá, Cliente Exemplo!</h1>
-        <p className='text-gray-600 mt-1 mb-6'>Acompanhe aqui o processo de descarte do seu equipamento e seu impacto.</p>
-        <hr className='border-t-2 border-[#B3C6B9] mb-8' />
-
         <div className='bg-[#EFEFF180] rounded-[30px] p-8 md:p-10 border border-[#B3C6B9] w-full max-w-2xl mx-auto'>
           
           <h2 className='text-xl font-bold text-gray-900 mb-6'>Cadastre uma nova oportunidade</h2>
@@ -119,7 +115,7 @@ async function cadastrarOportunidade(e: SyntheticEvent<HTMLFormElement>) {
 
           </form>
         </div>
-      </div>
-    </div>
+      </ContainerDashboard>
+
   ) 
 }

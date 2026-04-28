@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/icons/logo-greentech.png";
+import Logo from '../../../../assets/icons/logo-greentech.png';
 
 const Footer = () => (
   <footer className="bg-green-900/15 text-gray-700 pt-12 pb-6 px-6">
     <div className="max-w-6xl mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-10 mb-10">
         <div className="flex items-center gap-3">
-          <img src={logo} alt="Greentech CRM" className="h-12 object-contain" />
+          <img src={Logo} alt="Greentech CRM" className="h-12 object-contain" />
           <div className="leading-tight">
             <p className="font-bold text-lg text-gray-900">Greentech</p>
             <p className=" font-medium text-sm text-gray-500">CRM</p>

@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Sidebar from '../../components/layouts/layoutdashboard/sidebar/Sidebar';
-import { AuthContext } from '../../contexts/AuthContext';
-import { buscar } from '../../services/Service';
-import type { Oportunidade } from '../../models/Oportunidade';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../contexts/AuthContext';
+import { buscar } from '../../../services/Service';
+import type { Oportunidade } from '../../../models/Oportunidade';
 import { ClipLoader } from 'react-spinners';
-import { ToastAlerta } from '../../utils/ToastAlerta';
+import { ToastAlerta } from '../../../utils/ToastAlerta';
+import ContainerDashboard from '../../../components/containerdashboard/ContainerDashboard';
 
-const ListarOportunidades: React.FC = () => {
+function ListarOportunidades() {
   const [oportunidades, setOportunidades] = useState<Oportunidade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { usuario, handleLogout } = useContext(AuthContext);
@@ -63,13 +63,7 @@ const ListarOportunidades: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#F3F4F6]">
-      <Sidebar />
-      <main className="flex-1 ml-64 p-10 overflow-y-auto">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">Todas as Oportunidades</h1>
-          <p className="text-gray-500 mt-1">Listagem completa de todas as oportunidades cadastradas.</p>
-        </div>
+    <ContainerDashboard nome='cliente' tipo='cliente'>
 
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
@@ -125,8 +119,7 @@ const ListarOportunidades: React.FC = () => {
             )}
           </div>
         )}
-      </main>
-    </div>
+    </ContainerDashboard>
   );
 };
 

@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Sidebar from '../../../components/layouts/layoutdashboard/sidebar/Sidebar';
+import { useContext, useEffect, useState } from 'react';
 import ImpactCards from '../../../components/impactcards/impactCards';
 import OpportunityTable from '../../../components/oportunidade/Opportunity';
 import { AuthContext } from '../../../contexts/AuthContext';
@@ -7,8 +6,9 @@ import { buscar } from '../../../services/Service';
 import type { Oportunidade } from '../../../models/Oportunidade';
 import { ClipLoader } from 'react-spinners';
 import { ToastAlerta } from '../../../utils/ToastAlerta';
+import ContainerDashboard from '../../../components/containerdashboard/ContainerDashboard';
 
-const Dashboard: React.FC = () => {
+function DashboardCliente() {
   const [oportunidades, setOportunidades] = useState<Oportunidade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { usuario, handleLogout } = useContext(AuthContext);
@@ -57,9 +57,8 @@ const Dashboard: React.FC = () => {
   const reusosTotal = oportunidades.filter((op) => op.categoria?.toLowerCase() === 'reutilizado').length;
 
   return (
-    <div className="flex min-h-screen bg-[#F3F4F6]">
-      <Sidebar />
-      <main className="flex-1 ml-64 p-10 overflow-y-auto">
+    <ContainerDashboard nome='cliente' tipo='cliente'>
+      
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
             <ClipLoader size={50} color="#135A33" />
@@ -98,9 +97,8 @@ const Dashboard: React.FC = () => {
             </section>
           </div>
         )}
-      </main>
-    </div>
+    </ContainerDashboard>
   );
 };
 
-export default Dashboard;
+export default DashboardCliente;

@@ -1,22 +1,12 @@
-import type { FC } from 'react';
 import Tabela from '../../../components/tabela/Tabela';
-import iconeCO2 from "../../assets/simbolo CO2.png.png";
-import iconeRecicle from "../../assets/simbolo recicle.png";
+import iconeCO2 from "../../../assets/simbolo CO2.png.png";
+import iconeRecicle from "../../../assets/simbolo recicle.png";
+import ContainerDashboard from '../../../components/containerdashboard/ContainerDashboard';
 
-const DashboardEmpresa: FC = () => {
-
-return (
-    <div className="flex flex-row h-screen bg-[#E9ECEF] w-full overflow-hidden font-sans">
-
-      <main className="flex-1 h-full overflow-y-auto p-8 flex justify-center">
-        <div className="w-full max-w-5xl flex flex-col gap-6 bg-[#CBD5CB] rounded-[40px] p-8 border border-[#B5BEB5] shadow-md self-start">
-          <header className="border-b border-[#B5BEB5] pb-4 text-left">
-            <h2 className="text-[#1A3321] text-3xl font-bold">Olá, Empresa Exemplo!</h2>
-            <p className="text-[#4A6D55] mt-1 text-sm">
-              Acompanhe aqui o processo de descarte do seu equipamento e seu impacto.
-            </p>
-          </header>
-
+function DashboardEmpresa() {
+  return (
+      <ContainerDashboard nome='empresa' tipo='empresa'>
+        
           <section className="bg-[#E4EBE4]/60 p-6 rounded-[35px] border border-[#B5BEB5]">
             <h2 className="text-lg text-[#1A3321] font-bold mb-4 text-left">
               Oportunidades ativas (pendente + processando)
@@ -82,10 +72,8 @@ return (
               </div>
             </div>
           </section>
-        </div>
-      </main>
-    </div>
-  );
+      </ContainerDashboard>
+    );
 };
 
 export default DashboardEmpresa;
