@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import demoImg from "../../assets/img/demo.png";
 import {
   RiAlertLine,
@@ -7,6 +7,7 @@ import {
   RiLineChartLine,
 } from "react-icons/ri";
 import Coleta from "./coleta/Coleta";
+import { useEffect } from "react";
 
 const stats = [
   {
@@ -30,6 +31,19 @@ const stats = [
 ];
 
 function Home() {
+
+      const location = useLocation();
+
+useEffect(() => {
+  const scrollTo = location.state?.scrollTo;
+  if (scrollTo) {
+    const timer = setTimeout(() => {
+      document.getElementById(scrollTo)?.scrollIntoView({ behavior: "smooth" });
+    }, 500);
+    return () => clearTimeout(timer);
+  }
+}, [location.state]);
+
     return (
         <div className="min-h-screen w-full overflow-x-hidden bg-gray-200">
             <section className="bg-gray-200 pt-20">
@@ -171,13 +185,13 @@ function Home() {
                             ].map((card, i) => (
                                 <div
                                     key={i}
-                                    className="flex-1 bg-gray-200 rounded-2xl px-6 py-5 flex flex-col gap-3"
+                                    className="flex-1 bg-gray-200 rounded-2xl px-5 py-3 flex flex-col gap-1.5"
                                 >
                                     <div>{card.icon}</div>
-                                    <h3 className="text-lg font-bold text-gray-900">
+                                    <h3 className="text-base font-bold text-gray-900">
                                         {card.title}
                                     </h3>
-                                    <p className="text-gray-600 text-sm leading-relaxed">
+                                    <p className="text-gray-600 text-xs leading-relaxed flex-1">
                                         {card.desc}
                                     </p>
                                     <Link to="/login">
