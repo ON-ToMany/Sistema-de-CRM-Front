@@ -195,7 +195,7 @@ useEffect(() => {
                                         {card.desc}
                                     </p>
                                     <Link to="/login">
-                                        <button className="mt-auto self-start bg-green-900 text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-green-800 transition-colors">
+                                        <button className="mt-auto self-start bg-green-900 cursor-pointer text-white text-sm font-semibold px-5 py-2 rounded-full hover:bg-green-800 transition-colors">
                                             Saiba mais
                                         </button>
                                     </Link>
