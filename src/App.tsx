@@ -7,39 +7,46 @@ import { AuthProvider } from "./contexts/AuthContext";
 import LoginUsuario from "./pages/Login/Login";
 import CadastrarUsuario from "./pages/cadastrar/CadastrarUsuario";
 import CardOportunidade from "./components/oportunidade/CardOportunidade";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 import DashboardEmpresa from "./pages/gerenciarempresa/DashboardEmpresa";
 import Dashboard from "./pages/dashboard/Dashboard";
 import PublicLayout from "./components/layouts/layoutpublico/LayoutPublico";
 import DashboardLayout from "./components/layouts/layoutdashboard/LayoutDashboards";
 import ListarOportunidades from "./pages/listaroportunidades/ListarOportunidades";
+import RecuperarSenha from "./components/recuperarsenha/RecuperarSenha";
 
 function App() {
   return (
     <AuthProvider>
-      <ToastContainer/>
+      <ToastContainer />
       <BrowserRouter>
         <Routes>
           <Route element={<PublicLayout />}>
-          <Route path="/" element={<Home/>} />
-          <Route path="/inicio" element={<Home/>} />
-          <Route path="/Parceria" element={<Parceria/>} />
-          <Route path="/Sobre" element={<Quemsomos/>} />
-          <Route path="/Login" element={<LoginUsuario/>} />
-          <Route path="/cadastrar" element={<CadastrarUsuario/>} />
-        </Route>
-
-        <Route element={<DashboardLayout />}>
-          <Route path="/dashboard-empresa" element={<DashboardEmpresa/>} />
-          <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
-          <Route path="/dashboard-cliente" element={<Dashboard />} />
-          <Route path="/listar-oportunidades" element={<ListarOportunidades />} />
-          <Route path="/cadastrar-oportunidade" element={<CardOportunidade/>} />
-        </Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/inicio" element={<Home />} />
+            <Route path="/Parceria" element={<Parceria />} />
+            <Route path="/Sobre" element={<Quemsomos />} />
+            <Route path="/cadastrar" element={<CadastrarUsuario />} />
+          </Route>
+          <Route path="/Login" element={<LoginUsuario />} />
+          <Route path="/recuperar-senha" element={<RecuperarSenha />} />
+          <Route element={<DashboardLayout />}>
+            <Route path="/dashboard-empresa" element={<DashboardEmpresa />} />
+            <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
+            <Route path="/dashboard-cliente" element={<Dashboard />} />
+            <Route
+              path="/listar-oportunidades"
+              element={<ListarOportunidades />}
+            />
+            <Route
+              path="/cadastrar-oportunidade"
+              element={<CardOportunidade />}
+            />
+          </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
-  )
+  );
 }
 
 export default App;
