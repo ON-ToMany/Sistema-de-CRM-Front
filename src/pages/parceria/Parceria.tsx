@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import{FaHandshake} from "react-icons/fa"
+import{FaCaretDown, FaCaretUp, FaHandshake} from "react-icons/fa"
 
 function Parceria() {
   const [flipIndex, setFlipIndex] = useState<number | null>(null);
@@ -11,95 +11,108 @@ function Parceria() {
       nome: "Flamengo",
       categoria: "Esporte",
       logo: "https://ik.imagekit.io/9yqf3fqpw/flamengo.png",
-      descricao: "Descarte responsável de equipamentos eletrônicos do clube.",
+      descricao: "Descarte responsável de equipamentos eletrônicos e de infraestrutura do clube.",
     },
-    {
-      nome: "Bangu Shopping",
-      categoria: "Varejo",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/Bangu-Shopping.jpg",
-      descricao: "Pontos de coleta de lixo eletrônico para clientes.",
-    },
-    {
-      nome: "Mobi Rio",
-      categoria: "Transporte",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/mobi.jpg",
-      descricao: "Gestão de resíduos eletrônicos do sistema de transporte.",
-    },
-    {
-      nome: "Ambev",
-      categoria: "Indústria",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/ambev.png",
-      descricao: "Reciclagem de equipamentos corporativos.",
-    },
-    {
-      nome: "Coca-Cola",
-      categoria: "Indústria",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/coca-cola.png",
-      descricao: "Logística reversa e descarte sustentável.",
-    },
-    {
-      nome: "1001",
-      categoria: "Transporte",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/1001.png",
-      descricao: "Descarte de equipamentos de frota e operação.",
-    },
-    {
-      nome: "Scania",
-      categoria: "Indústria",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/scania.jpg",
-      descricao: "Soluções sustentáveis para equipamentos industriais.",
-    },
-    {
-      nome: "Claro",
-      categoria: "Telecom",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/claro.jpg",
-      descricao: "Reciclagem de dispositivos e infraestrutura.",
-    },
-    {
-      nome: "Tim",
-      categoria: "Telecom",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/tim.png",
-      descricao: "Gestão de resíduos eletrônicos de telecom.",
-    },
-    {
-      nome: "Vivo",
-      categoria: "Telecom",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/vivo.png",
-      descricao: "Descarte consciente de equipamentos.",
-    },
-    {
-      nome: "Anatel",
-      categoria: "Regulador",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/anatel.jpg",
-      descricao: "Parcerias para controle e regulamentação ambiental.",
-    },
-    {
-      nome: "Light Energia",
-      categoria: "Energia",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/light_logo.jpg",
-      descricao: "Descarte de equipamentos elétricos.",
-    },
-    {
-      nome: "Águas do Rio",
-      categoria: "Saneamento",
-      logo: "https://ik.imagekit.io/9yqf3fqpw/cedae.jpg",
-      descricao: "Sustentabilidade no tratamento e descarte.",
-    },
-    {
+        {
       nome: "Prudential",
-      categoria: "Finanças",
+      categoria: "Seguros",
       logo: "https://ik.imagekit.io/9yqf3fqpw/prudential.jpg",
-      descricao: "Sustentabilidade no tratamento e descarte.",
+      descricao: "Apoio ao descarte responsável de equipamentos de TI no setor de seguros.",
     },
     {
       nome: "Generation",
       categoria: "Educação",
       logo: "https://ik.imagekit.io/9yqf3fqpw/generation.png",
-      descricao: "Sustentabilidade no tratamento e descarte.",
+      descricao: "Capacitação de jovens em práticas de sustentabilidade e descarte consciente de eletrônicos.",
     },
+        {
+      nome: "Globo",
+      categoria: "Mídia",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/globo.png",
+      descricao: "Descarte de equipamentos de transmissão, estúdio e infraestrutura de mídia.",
+    },
+    {
+      nome: "Investtools",
+      categoria: "Tech Financeira",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/investtools.jpg",
+      descricao: "Gestão de resíduos de equipamentos de tecnologia financeira com foco em ESG.",
+    },
+    {
+      nome: "Bangu Shopping",
+      categoria: "Varejo",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/Bangu-Shopping.jpg",
+      descricao: "Pontos de coleta de e-lixo disponíveis para lojistas e visitantes do shopping.",
+    },
+    {
+      nome: "Mobi Rio",
+      categoria: "Mobilidade Urbana",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/mobi.jpg",
+      descricao: "Gestão sustentável de resíduos eletrônicos da frota de mobilidade urbana.",
+    },
+    {
+      nome: "Ambev",
+      categoria: "Indústria",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/ambev.png",
+      descricao: "Reciclagem e descarte correto de equipamentos industriais e corporativos.",
+    },
+    {
+      nome: "Coca-Cola",
+      categoria: "Indústria",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/coca-cola.png",
+      descricao: "Logística reversa integrada para descarte sustentável de equipamentos da operação.",
+    },
+    {
+      nome: "1001",
+      categoria: "Transporte",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/1001.png",
+      descricao: "Descarte responsável de equipamentos eletrônicos e de rastreamento da frota.",
+    },
+    {
+      nome: "Scania",
+      categoria: "Automotivo",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/scania.jpg",
+      descricao: "Gestão de resíduos eletrônicos de equipamentos automotivos e de produção.",
+    },
+    {
+      nome: "Claro",
+      categoria: "Telecomunicações",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/claro.jpg",
+      descricao: "Reciclagem de dispositivos móveis, roteadores e infraestrutura de telecomunicações.",
+    },
+    {
+      nome: "Tim",
+      categoria: "Telecomunicações",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/tim.png",
+      descricao: "Descarte sustentável de chips, aparelhos e equipamentos de rede.",
+    },
+    {
+      nome: "Vivo",
+      categoria: "Telecomunicações",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/vivo.png",
+      descricao: "Coleta e reciclagem de dispositivos eletrônicos e equipamentos de telecomunicações.",
+    },
+    {
+      nome: "Anatel",
+      categoria: "Regulador",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/anatel.jpg",
+      descricao: "Parceria regulatória para fiscalização e normatização do descarte de equipamentos de telecom.",
+    },
+    {
+      nome: "Light Energia",
+      categoria: "Energia",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/light_logo.jpg",
+      descricao: "Descarte seguro de transformadores, medidores e equipamentos de distribuição de energia.",
+    },
+    {
+      nome: "Águas do Rio",
+      categoria: "Saneamento",
+      logo: "https://ik.imagekit.io/9yqf3fqpw/cedae.jpg",
+      descricao: "Gestão de resíduos eletrônicos de equipamentos de saneamento e infraestrutura hídrica.",
+    },
+
   ];
 
-  const VISIBLE_COUNT = 8;
+  const VISIBLE_COUNT = 10;
   const visibleParceiros = expanded ? parceiros : parceiros.slice(0, VISIBLE_COUNT);
   const hiddenCount = parceiros.length - VISIBLE_COUNT;
 
@@ -152,11 +165,11 @@ function Parceria() {
         Nossos Parceiros
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
         {visibleParceiros.map((empresa, i) => (
           <div
             key={i}
-            className="w-full max-w-[320px] h-55"
+            className="w-full max-w-55 h-40"
             style={{ perspective: "1000px" }}
             onMouseEnter={() => setFlipIndex(i)}
             onMouseLeave={() => setFlipIndex(null)}
@@ -172,7 +185,7 @@ function Parceria() {
                 className="absolute w-full h-full rounded-2xl border border-green-950 bg-white flex flex-col items-center justify-center gap-3 p-5"
                 style={{ backfaceVisibility: "hidden" }}
               >
-                <img src={empresa.logo} alt={empresa.nome} className="h-12 object-contain" />
+                <img src={empresa.logo} alt={empresa.nome} className="h-10 object-contain" />
                 <span className="px-3 py-1 text-md rounded-full bg-green-100 text-green-800">
                   {empresa.categoria}
                 </span>
@@ -196,14 +209,7 @@ function Parceria() {
           className="flex items-center gap-2 text-green-800 hover:text-green-900 font-semibold text-sm transition-colors duration-150 cursor-pointer"
         >
           <span>{expanded ? "Ver menos" : `Ver todos (${hiddenCount} a mais)`}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className={`w-4 h-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-            strokeLinecap="round" strokeLinejoin="round"
-          >
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
+          {expanded ? <FaCaretUp /> : <FaCaretDown />}
         </button>
         {!expanded && (
           <p className="text-xs text-gray-500">
