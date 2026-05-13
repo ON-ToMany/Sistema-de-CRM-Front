@@ -1,15 +1,15 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { RiArrowLeftLine, RiLeafLine, RiMailLine, RiCheckLine } from "react-icons/ri"
+import { RiArrowLeftLine, RiMailLine, RiCheckLine } from "react-icons/ri"
 import Logo from "../../assets/icons/logoescrita-crm.png"
 
 export default function RecuperarSenha() {
   const [email, setEmail] = useState("")
   const [enviado, setEnviado] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault()
-    // TODO: integrar com o backend quando a rota estiver pronta
+    // Integrar com o backend quando a rota estiver pronta
     setEnviado(true)
   }
 
@@ -68,7 +68,6 @@ export default function RecuperarSenha() {
             </form>
           </>
         ) : (
-          /* ── Estado: e-mail enviado ── */
           <div className="w-full max-w-sm flex flex-col items-center text-center gap-4">
             <div className="bg-green-100 border border-green-300 rounded-full p-4">
               <RiCheckLine className="text-[#0D542B] text-3xl" />
@@ -86,7 +85,6 @@ export default function RecuperarSenha() {
           </div>
         )}
 
-        {/* Lembrou a senha? */}
         <p className="mt-8 text-sm font-medium text-gray-700">
           Lembrou a senha?{" "}
           <Link to="/Login" className="text-[#0D542B] font-bold hover:underline">
@@ -94,7 +92,6 @@ export default function RecuperarSenha() {
           </Link>
         </p>
 
-        {/* Footer simples */}
         <p className="text-xs text-gray-400 text-center mt-10">
           © 2026 GreenTech · Todos os direitos reservados ·{" "}
           <span className="font-medium">One to Many</span>
