@@ -22,7 +22,7 @@ const handleScrollLink = (e: React.MouseEvent, href: string) => {
   if (pathname === "/") {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
   } else {
-    navigate("/", { state: { scrollTo: sectionId } }); // passa via state, não hash
+    navigate("/", { state: { scrollTo: sectionId } });
   }
   setMenuOpen(false);
 };
@@ -106,19 +106,33 @@ const handleScrollLink = (e: React.MouseEvent, href: string) => {
         <nav className="bg-green-900/15 backdrop-blur-sm border-l border-r border-b rounded-b-3xl border-green-800 shadow-sm px-6 py-4">
           <ul className="flex flex-col gap-5">
             {navLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className={`block font-semibold transition-colors duration-200 py-1 ${
-                    isActive(link.href, link.type)
-                      ? "text-lime-600"
-                      : "text-gray-900 hover:text-lime-600"
-                  }`}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              </li>
+            <li key={link.label}>
+  {link.type === "scroll" ? (
+    
+      <a href={link.href}
+      className={`block font-semibold transition-colors duration-200 py-1 ${
+        isActive(link.href, link.type)
+          ? "text-lime-600"
+          : "text-gray-900 hover:text-lime-600"
+      }`}
+      onClick={(e) => handleScrollLink(e, link.href)}
+    >
+      {link.label}
+    </a>
+  ) : (
+    <Link
+      to={link.href}
+      className={`block font-semibold transition-colors duration-200 py-1 ${
+        isActive(link.href, link.type)
+          ? "text-lime-600"
+          : "text-gray-900 hover:text-lime-600"
+      }`}
+      onClick={() => setMenuOpen(false)}
+    >
+      {link.label}
+    </Link>
+  )}
+</li>
             ))}
           </ul>
         </nav>
