@@ -1,11 +1,8 @@
-
-
 import { useEffect, useState, type ChangeEvent} from 'react'
 import { usuarioCadastrar } from '../../../services/Service'
 import { useNavigate, Link } from 'react-router-dom' 
 import type Usuario from '../../../models/Usuario'
 import { ToastAlerta } from '../../../utils/ToastAlerta'
-import { ClipLoader } from "react-spinners";
 
 export default function CadastrarUsuario() {
   const navigate = useNavigate()
@@ -49,7 +46,6 @@ export default function CadastrarUsuario() {
         ToastAlerta("Usuário cadastrado com sucesso!", 'success')
         retornarLogin()
       } catch (error: any) {
-        console.log(error)
         ToastAlerta("Erro ao cadastrar usuário", 'error')
       } finally {
         setIsloading(false)
@@ -63,13 +59,12 @@ export default function CadastrarUsuario() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#EAECEE]">
-      <h1 className='text-xl font-bold text-[#000000] mb-4'>Cadastre-se</h1>
+    <div className="flex flex-col items-center py-30 px-4 md:px-0 justify-center min-h-screen">
+      <h2 className="font-bold text-center text-gray-800 max-w-100px mb-6 text-2xl leading-tight">Cadastre-se</h2>
       
-
       <form 
         onSubmit={CadastroDeUsuario} 
-        className='bg-[#bacbbf] p-8 rounded-[58px] border border-gray-400 w-full max-w-sm flex flex-col gap-3 shadow-lg'
+        className="bg-green-900/15 p-8 rounded-[30px] border border-green-800 w-full max-w-sm gap-7 flex flex-col shadow-lg"
       >
         
         <div className="flex flex-col">
@@ -79,7 +74,7 @@ export default function CadastrarUsuario() {
             name="nome"
             placeholder='Digite seu nome completo'
             value={usuario.nome} 
-            className=' bg-white w-full h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
+            className=' bg-white w-full h-10 rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
             onChange={atualizarEstado}
             required
           />
@@ -89,7 +84,7 @@ export default function CadastrarUsuario() {
           <label htmlFor="tipo" className='text-[#0D542B] font-bold mb-1 ml-2'>Tipo</label>
           <select   
             name="tipo"
-            className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]'
+            className='w-full bg-white h-10 rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B]'
             value={usuario.tipo} 
             onChange={atualizarEstado}
             required
@@ -108,7 +103,7 @@ export default function CadastrarUsuario() {
             type="email" 
             name="email"
             placeholder='Digite seu email' 
-            className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
+            className='w-full bg-white h-10 rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
             value={usuario.email} 
             onChange={atualizarEstado}
             required
@@ -122,7 +117,7 @@ export default function CadastrarUsuario() {
             name="senha"
             placeholder='Digite uma senha'
             value={usuario.senha} 
-            className='w-full bg-white h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
+            className='w-full bg-white h-10 rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
             onChange={atualizarEstado}
             required
           />
@@ -135,7 +130,7 @@ export default function CadastrarUsuario() {
             name="confirmarSenha"
             placeholder='Confirme a senha digitada'
             value={confirmarSenha} 
-            className='w-full h-10  bg-white rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
+            className='w-full h-10 bg-white rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
             onChange={handleSenha}
             required
           />
@@ -143,10 +138,10 @@ export default function CadastrarUsuario() {
 
         <button 
           type="submit" 
-          className='bg-[#135A33] cursor-pointer text-white font-bold py-3 rounded-full hover:bg-[#0a3d20] transition-colors flex justify-center items-center'
+          className='bg-green-800 cursor-pointer text-white font-bold py-3 rounded-full hover:bg-green-900 transition-colors flex justify-center items-center'
           disabled={isloading}
         >
-          {isloading ? <ClipLoader size={43}/> : 'Cadastrar'}
+          {isloading ? 'Cadastrando...' : 'Cadastrar'}
         </button>
       </form>
       <p className="mt-4 text-black font-medium">

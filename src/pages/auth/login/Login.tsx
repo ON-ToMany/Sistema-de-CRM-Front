@@ -37,14 +37,13 @@ export default function LoginUsuario() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#EAECEE]">
-
+    <div className="flex flex-col items-center px-4 md:px-0 justify-center min-h-screen">
       <p className="font-bold text-center text-gray-800 max-w-100px mb-6 text-[18px] leading-tight">
         Acesse sua conta para acompanhar ou gerenciar o processo de descarte de seu equipamento.
       </p>
 
       <form onSubmit={logar}
-        className="bg-[#bacbbf] p-8 rounded-[30px] border border-gray-400 w-full max-w-sm flex flex-col shadow-lg"
+        className="bg-green-900/15 p-8 rounded-[30px] border border-green-800 w-full max-w-sm flex flex-col shadow-lg"
       >
         <div className="flex flex-col mb-4">
           <label htmlFor="usuario" className="text-[#0D542B] font-bold mb-1 ml-2">Usuário</label>
@@ -54,7 +53,7 @@ export default function LoginUsuario() {
             name="usuario"
             value={usuarioLogin.email}
             placeholder="Digite seu email"
-            className="w-full h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B] bg-white"
+            className="w-full h-10 rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B] bg-white"
             onChange={atualizarEstado}
           />
         </div>
@@ -67,14 +66,14 @@ export default function LoginUsuario() {
             name="senha"
             placeholder="Digite sua senha"
             value={usuarioLogin.senha ?? ''}
-            className="w-full h-10 rounded-full px-4 outline-none focus:ring-2 focus:ring-[#0D542B] bg-white"
+            className="w-full h-10 rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B] bg-white"
             onChange={atualizarEstado}
           />
         </div>
 
         <button
           type="submit"
-          className="cursor-pointer w-full h-12 rounded-full bg-[#135A33] text-white font-bold hover:bg-[#0a3d20] transition-colors"
+          className="cursor-pointer w-full h-12 rounded-full bg-green-800 text-white font-bold hover:bg-green-900 transition-colors"
         >
           {isloading ? 'Entrando...' : 'Entrar'}
         </button>
