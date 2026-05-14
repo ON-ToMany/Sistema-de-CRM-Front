@@ -4,5 +4,5 @@ export default interface UsuarioLogin {
     email: string;  
     senha: string;
     tipo: 'empresa' | 'cliente' | '';
-    access_token: string;
+    token: string;
 }

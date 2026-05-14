@@ -15,11 +15,9 @@ export default function LoginUsuario() {
   }
 
   useEffect(() => {
-    if (usuario.access_token !== '') {
-      if (usuario.tipo === 'empresa') {
-        navigate("/dashboard-empresa");
-      } else if (usuario.tipo === 'cliente') {
-        navigate("/dashboard-cliente");
+    if (usuario.token !== '') {
+      if (usuario.tipo === 'empresa' || usuario.tipo === 'cliente') {
+        navigate("/dashboard");
       } else {
         navigate("/");
       }
