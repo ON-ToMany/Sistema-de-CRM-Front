@@ -9,14 +9,16 @@ function Sidebar() {
   const navigate = useNavigate();
 
   const navItemsEmpresa = [
-    { name: 'Início',    path: '/dashboard-empresa',  icon: RiHome4Line },
-    { name: 'Gerenciar', path: '/gerenciar-empresa',  icon: RiSettings4Line },
+    { name: 'Início',       path: '/dashboard',                icon: RiHome4Line },
+    { name: 'Gerenciar',    path: '/gerenciar-oportunidades',  icon: RiSettings4Line },
+    { name: 'Cadastrar',    path: '/cadastrar-oportunidade',   icon: RiAddCircleLine },
+    { name: 'Histórico',    path: '/historico-oportunidades',  icon: RiListCheck },
   ];
 
   const navItemsCliente = [
-    { name: 'Início',       path: '/dashboard-cliente',      icon: RiHome4Line },
+    { name: 'Início',       path: '/dashboard',              icon: RiHome4Line },
     { name: 'Cadastrar',    path: '/cadastrar-oportunidade', icon: RiAddCircleLine },
-    { name: 'Listar Todas', path: '/listar-oportunidades',   icon: RiListCheck },
+    { name: 'Histórico',    path: '/historico-oportunidades',icon: RiListCheck },
   ];
 
   const navItems = usuario.tipo === 'empresa' ? navItemsEmpresa : navItemsCliente;
@@ -27,7 +29,7 @@ function Sidebar() {
   }
 
   return (
-    <aside className="group w-16 hover:w-60 h-screen bg-green-800/20 flex flex-col fixed border-r border-t border-b border-green-800 rounded-r-4xl py-6 px-3 gap-6 shadow-md transition-all duration-300 ease-in-out overflow-hidden z-50">
+    <aside className="group w-16 top-0 hover:w-60 h-screen bg-green-800/20 flex flex-col sticky border-r border-t border-b border-green-800 rounded-r-4xl py-6 px-3 gap-6 shadow-md transition-all duration-300 ease-in-out overflow-hidden ">
       <div className="flex items-center h-14 ">
         <div className="shrink-0 w-10 flex justify-center">
           <img src={Logo} alt="Greentech CRM" className="h-10 w-auto object-contain object-left"/>
