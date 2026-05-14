@@ -2,17 +2,16 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Parceria from "./pages/parceiros/Parceria";
 import Quemsomos from "./pages/quemsomos/Quemsomos";
-import GerenciarEmpresa from "./pages/dashboards/empresa/GerenciarEmpresa";
 import { AuthProvider } from "./contexts/AuthContext";
 import LoginUsuario from "./pages/auth/login/Login";
 import CadastrarUsuario from "./pages/auth/cadastrar/CadastrarUsuario";
-import CardOportunidade from "./pages/dashboards/cliente/CadastrarOportunidade";
 import { ToastContainer } from 'react-toastify';
-import DashboardEmpresa from "./pages/dashboards/empresa/DashboardEmpresa";
-import Dashboard from "./pages/dashboards/cliente/DashboardCliente";
+import Dashboard from "./pages/dashboard/Dashboard";
 import PublicLayout from "./components/layouts/layoutpublico/LayoutPublico";
 import DashboardLayout from "./components/layouts/layoutdashboard/LayoutDashboards";
-import ListarOportunidades from "./pages/dashboards/cliente/ListarOportunidades";
+import CadastrarOportunidade from "./pages/dashboard/CadastrarOportunidade";
+import GerenciarOportunidades from "./pages/dashboard/GerenciarOportunidades";
+import Historico from "./pages/dashboard/Historico";
 
 function App() {
   return (
@@ -30,13 +29,12 @@ function App() {
         </Route>
 
         <Route element={<DashboardLayout />}>
-          <Route path="/dashboard-empresa" element={<DashboardEmpresa/>} />
-          <Route path="/gerenciar-empresa" element={<GerenciarEmpresa />} />
-          <Route path="/dashboard-cliente" element={<Dashboard />} />
-          <Route path="/listar-oportunidades" element={<ListarOportunidades />} />
-          <Route path="/cadastrar-oportunidade" element={<CardOportunidade/>} />
+          <Route path="/dashboard" element={<Dashboard/>}/>
+          <Route path="/gerenciar-oportunidades" element={<GerenciarOportunidades />} />
+          <Route path="/cadastrar-oportunidade" element={<CadastrarOportunidade />} />
+          <Route path="/historico-oportunidades" element={<Historico />} />
         </Route>
-        </Routes>
+        </Routes> 
       </BrowserRouter>
     </AuthProvider>
   )
