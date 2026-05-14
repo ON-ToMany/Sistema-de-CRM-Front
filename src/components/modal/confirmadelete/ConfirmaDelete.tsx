@@ -1,18 +1,26 @@
+import { useState } from "react";
 import { RiCloseCircleLine } from "react-icons/ri";
 
 interface ConfirmDeleteModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onConfirm: () => void;
+  onConfirm: () => Promise<void>;
 }
 
 export function ConfirmDeleteModal({ isOpen, onClose, onConfirm }: ConfirmDeleteModalProps) {
+  const [isDeleting, setIsDeleting] = useState(false);
   if (!isOpen) return null;
+
+  async function handleConfirm() {
+    setIsDeleting(true);
+    await onConfirm();
+    setIsDeleting(false);
+    onClose();
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20">
-      <div className="bg-green-800/20 rounded-2xl shadow-xl w-full max-w-xs p-6 backdrop-blur-xl border border-green-900">
-        
+      <div className="bg-gray-100/50 rounded-2xl shadow-xl w-full max-w-xs p-6 backdrop-blur-xl border border-green-900">
         <div className="flex items-center justify-between mb-5">
           <h2 className="text-xl font-semibold text-gray-900">Deletar</h2>
           <button
@@ -30,15 +38,16 @@ export function ConfirmDeleteModal({ isOpen, onClose, onConfirm }: ConfirmDelete
         <div className="flex gap-3">
           <button
             onClick={onClose}
-            className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium py-2.5 rounded-full transition-colors"
+            className="flex-1 border border-green-800 bg-gray-200 hover:bg-gray-300 text-gray-800 text-sm font-medium py-2.5 rounded-full transition-colors cursor-pointer"
           >
             Cancelar
           </button>
           <button
-            onClick={() => { onConfirm(); onClose(); }}
-            className="flex-1 bg-red-800 hover:bg-red-900 text-gray-100 text-sm font-medium py-2.5 rounded-full transition-colors"
+            onClick={handleConfirm}
+            disabled={isDeleting}
+            className="flex-1 bg-red-800 hover:bg-red-900 text-gray-100 text-sm font-medium py-2.5 rounded-full transition-colors cursor-pointer"
           >
-            Deletar
+            {isDeleting ? "Deletando..." : "Deletar"}
           </button>
         </div>
       </div>
