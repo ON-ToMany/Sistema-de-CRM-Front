@@ -25,7 +25,7 @@ export const buscar = async(url:string,setDados:Function,header:object)=>{
     setDados(resposta.data)
 }
 
-export const atualizar  = async(url:string,dados:object,setDados:Function,header:object)=>{
+export const atualizar  = async(url:string, dados:object, setDados:Function, header:object)=>{
     const resposta = await api.put(url,dados,header)
     setDados(resposta.data)
 }
