@@ -20,9 +20,8 @@ const oportunidadeMock = {
   id: 1,
   equipamento: "MacBook Pro M1",
   co2Economizado: 154.2,
-
   cliente: {
-    nome: "Márcia Telles Fogaça",
+    nome: "IonGuard Seguros E-bike", 
   },
 };
 
