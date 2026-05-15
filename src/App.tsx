@@ -13,6 +13,7 @@ import CadastrarOportunidade from "./pages/dashboard/CadastrarOportunidade";
 import GerenciarOportunidades from "./pages/dashboard/GerenciarOportunidades";
 import Historico from "./pages/dashboard/Historico";
 import RecuperarSenha from "./components/recuperarsenha/RecuperarSenha";
+import CertificadoVerde from "./components/certificado/CertificadoVerde";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="/gerenciar-oportunidades" element={<GerenciarOportunidades />} />
             <Route path="/cadastrar-oportunidade" element={<CadastrarOportunidade />} />
             <Route path="/historico-oportunidades" element={<Historico />} />
+            <Route path="/certificados" element={<CertificadoVerde oportunidades={[]}/>} />
           </Route>
         </Routes> 
       </BrowserRouter>

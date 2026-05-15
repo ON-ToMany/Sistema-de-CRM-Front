@@ -1,23 +1,36 @@
 import './Certificado.css'
 import { useState } from 'react'
-
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
-import logoGreenTech from '../../assets/logo GreenTech.png'
+import logoGreenTech from '../../assets/icons/logo-greentech.png'
+import { useContext } from 'react'
+import { AuthContext } from '../../contexts/AuthContext'
+import type { Oportunidade } from '../../models/Oportunidade'
+import SeloESG from '../../assets/img/seloesg.png'
+import Sustentabilidade from '../../assets/icons/sustentabilidade.png'
+import Parceria from '../../assets/icons/parceria.png'
+import Inovacao from '../../assets/icons/inovacao.png'
 
 type Props = {
-  oportunidade: {
-    cliente: {
-      nome: string
-    }
-    co2Economizado: number
-    equipamento: string
-  }
+  oportunidades: Oportunidade[]
 }
 
 export default function CertificadoVerde({
-  oportunidade,
+  oportunidades,
 }: Props) {
+
+  const { usuario } = useContext(AuthContext)
+
+  const finalizadas = oportunidades.filter(
+    (op) => op.status?.toLowerCase() === 'finalizado'
+  )
+  const co2Total = finalizadas.reduce(
+    (acc, curr) => acc + (curr.co2Economizado ?? 0), 0
+  )
+  const equipamentosTotal = finalizadas.length
+  const impactosPositivos = finalizadas.filter(
+    (op) => op.categoria === 'reciclado' || op.categoria === 'reutilizado'
+  ).length
 
   function gerarHash() {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
@@ -46,7 +59,6 @@ export default function CertificadoVerde({
     const canvas = await html2canvas(cert, {
       scale: 2,
       useCORS: true,
-      backgroundColor: '#ffffff',
     })
 
     const img = canvas.toDataURL('image/png')
@@ -121,22 +133,8 @@ export default function CertificadoVerde({
 
           </div>
 
-          <div className="seal">
-
-            <div className="seal-outer"></div>
-
-            <div className="seal-inner">
-
-              <div className="seal-esg">
-                ESG
-              </div>
-
-              <div className="seal-year">
-                2026
-              </div>
-
-            </div>
-
+          <div className="w-32">
+              <img src={SeloESG} alt="Selo ESG" className="seal-img" />
           </div>
 
         </div>
@@ -158,7 +156,7 @@ export default function CertificadoVerde({
           </div>
 
          <div className="cert-name">
-                  IonGuard Seguros E-bike
+                  {usuario.nome}
                  </div>
 
           <div className="cert-desc">
@@ -173,7 +171,7 @@ export default function CertificadoVerde({
             <div className="impact-item">
 
               <div className="impact-val">
-                {oportunidade.co2Economizado}kg
+                {co2Total}kg
               </div>
 
               <div className="impact-unit">
@@ -187,7 +185,7 @@ export default function CertificadoVerde({
             <div className="impact-item">
 
               <div className="impact-val">
-                59
+                {equipamentosTotal}
               </div>
 
               <div className="impact-unit">
@@ -201,7 +199,7 @@ export default function CertificadoVerde({
             <div className="impact-item">
 
               <div className="impact-val">
-                12
+                {impactosPositivos}
               </div>
 
               <div className="impact-unit">
@@ -217,20 +215,19 @@ export default function CertificadoVerde({
             <div className="pillar">
 
               <div className="pillar-icon">
-                ♻
+                <img src={Sustentabilidade} alt="Sustentabilidade" width={32} />
               </div>
 
               <div className="pillar-label">
                 Sustentabilidade
-    
               </div>
 
             </div>
 
             <div className="pillar">
 
-              <div className="pillar-icon">
-                🤝
+              <div className="pillar-icon flex flex-col">
+                <img src={Parceria} alt="Parceria" width={28} />
               </div>
 
               <div className="pillar-label">
@@ -242,7 +239,7 @@ export default function CertificadoVerde({
             <div className="pillar">
 
               <div className="pillar-icon">
-                ⚡
+                <img src={Inovacao} alt="Inovação" width={24} />
               </div>
 
               <div className="pillar-label">
@@ -258,7 +255,7 @@ export default function CertificadoVerde({
        <div className="cert-footer">
   <div className="cert-meta">
     <div>
-      <strong>Empresa:</strong> IonGuard Seguros E-bike
+      <strong>Empresa:</strong> {usuario.nome}
     </div>
 
             <div>

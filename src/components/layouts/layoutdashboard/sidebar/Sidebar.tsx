@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { RiLoginBoxLine, RiSettings4Line, RiHome4Line, RiAddCircleLine, RiListCheck  } from "react-icons/ri";
+import { PiCertificate } from "react-icons/pi";
 import { NavLink, useNavigate } from 'react-router-dom';
 import Logo from '../../../../assets/icons/logo-greentech.png';
 import { AuthContext } from '../../../../contexts/AuthContext';
@@ -13,12 +14,14 @@ function Sidebar() {
     { name: 'Gerenciar',    path: '/gerenciar-oportunidades',  icon: RiSettings4Line },
     { name: 'Cadastrar',    path: '/cadastrar-oportunidade',   icon: RiAddCircleLine },
     { name: 'Histórico',    path: '/historico-oportunidades',  icon: RiListCheck },
+    { name: 'Certificação', path: '/certificados',             icon: PiCertificate }
   ];
 
   const navItemsCliente = [
     { name: 'Início',       path: '/dashboard',              icon: RiHome4Line },
     { name: 'Cadastrar',    path: '/cadastrar-oportunidade', icon: RiAddCircleLine },
     { name: 'Histórico',    path: '/historico-oportunidades',icon: RiListCheck },
+    { name: 'Certificação', path: '/certificados',           icon: PiCertificate }
   ];
 
   const navItems = usuario.tipo === 'empresa' ? navItemsEmpresa : navItemsCliente;
