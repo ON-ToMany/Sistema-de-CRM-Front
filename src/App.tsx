@@ -25,10 +25,11 @@ function App() {
             <Route path="/inicio" element={<Home/>} />
             <Route path="/Parceria" element={<Parceria/>} />
             <Route path="/Sobre" element={<Quemsomos/>} />
-            <Route path="/Login" element={<LoginUsuario/>} />
             <Route path="/cadastrar" element={<CadastrarUsuario/>} />
-            <Route path="/recuperar-senha" element={<RecuperarSenha />} />
           </Route>
+
+          <Route path="/Login" element={<LoginUsuario/>} />
+          <Route path="/recuperar-senha" element={<RecuperarSenha />} />
 
           <Route element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard/>}/>

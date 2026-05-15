@@ -3,10 +3,18 @@ import type UsuarioLogin from "../../../models/UsuarioLogin";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { RiArrowLeftLine, RiEyeLine, RiEyeOffLine, RiUserLine, RiBuildingLine } from "react-icons/ri";
-import Logo from "../../assets/icons/logoescrita-crm.png";
+import Logo from '../../../assets/icons/logo-greentech.png';
 
 export default function LoginUsuario() {
-  const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>( {} as UsuarioLogin );
+  const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
+    id: 0,
+    nome: "",
+    usuario: "",
+    email: "",
+    senha: "",
+    tipo: "",
+    token: "",
+  });
   const [isloading, setIsloading] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState(false);
   const { usuario, handleLogin } = useContext(AuthContext);
@@ -19,7 +27,7 @@ export default function LoginUsuario() {
   };
 
   useEffect(() => {
-    if (usuario.token !== "") {
+    if (usuario?.token !== "") {
       if (usuario.tipo === "empresa" || usuario.tipo === "cliente") {
         navigate("/dashboard");
       } else {
@@ -35,8 +43,6 @@ export default function LoginUsuario() {
 
     try {
       await handleLogin(usuarioLogin);
-    } catch (error: any) {
-      if (error) console.error(error);
     } finally {
       setIsloading(false);
     }
@@ -52,7 +58,7 @@ export default function LoginUsuario() {
 
   return (
     <div className="min-h-screen bg-[#EAECEE] flex flex-col lg:flex-row">
-      <div className="hidden lg:flex lg:w-[45%] bg-[#0D542B] flex-col justify-between p-12 relative overflow-hidden shrink-0">
+      <div className="hidden lg:flex lg:w-[45%] bg-[#0D542B] flex-col gap-20 justify-center p-12 relative overflow-hidden shrink-0">
         <div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-white/5" />
         <div className="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-white/5 translate-x-1/3 translate-y-1/3" />
         <div className="absolute top-1/2 -right-10 w-40 h-40 rounded-full bg-white/5" />

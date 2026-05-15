@@ -23,6 +23,7 @@
     const estadoInicial: UsuarioLogin = {
       id: 0,
       nome: "",
+      usuario: "",
       email: "",
       senha: "",
       tipo: "",
@@ -51,6 +52,7 @@
         setUsuario({
           id: resposta.id,
           nome: resposta.nome,
+          usuario: resposta.usuario,
           email: resposta.email,
           senha: '',  
           tipo: resposta.tipo,        

@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Logo from "../../assets/icons/logo-greentech.png";
+import Logo from '../../../../assets/icons/logo-greentech.png'; 
 
 const Footer = () => {
   const { pathname } = useLocation();
