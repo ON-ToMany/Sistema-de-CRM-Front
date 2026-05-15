@@ -23,10 +23,11 @@
     const estadoInicial: UsuarioLogin = {
       id: 0,
       nome: "",
+      usuario: "",
       email: "",
       senha: "",
-      tipo: '',
-      access_token: ""
+      tipo: "",
+      token: ""
     }
 
     const [usuario, setUsuario] = useState<UsuarioLogin>(() => {
@@ -38,7 +39,7 @@
     const isLogout = useRef(false);
 
     useEffect(() => {
-      if (usuario.access_token !== "") {
+      if (usuario.token !== "") {
         localStorage.setItem('usuarioToken', JSON.stringify(usuario));
       }
     }, [usuario]);
@@ -47,16 +48,15 @@
       setIsLoading(true);
       try {
         const resposta = await Login('/auth/login', usuarioLogin, () => {});
-        
-        console.log('Campos da resposta:', Object.keys(resposta))
 
         setUsuario({
           id: resposta.id,
           nome: resposta.nome,
+          usuario: resposta.usuario,
           email: resposta.email,
           senha: '',  
           tipo: resposta.tipo,        
-          access_token: resposta.token  // ✅ corrigido: era resposta.access_token
+          token: resposta.token 
         });
 
         ToastAlerta('Usuário autenticado com sucesso!', 'sucesso');

@@ -1,0 +1,152 @@
+import { useEffect, useState, type ChangeEvent} from 'react'
+import { usuarioCadastrar } from '../../../services/Service'
+import { useNavigate, Link } from 'react-router-dom' 
+import type Usuario from '../../../models/Usuario'
+import { ToastAlerta } from '../../../utils/ToastAlerta'
+
+export default function CadastrarUsuario() {
+  const navigate = useNavigate()
+
+  const [usuario, setUsuario] = useState<Usuario>({
+    id: 0,
+    nome: "",
+    senha: "",
+    email: "", 
+    tipo: ""
+  })
+
+  const [isloading, setIsloading] = useState<boolean>(false)
+  const [confirmarSenha, setConfirmarSenha] = useState<string>("") 
+
+  const atualizarEstado = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setUsuario({ ...usuario, [e.target.name]: e.target.value })
+  }
+
+  const retornarLogin = () => {
+    navigate("/login")
+  }
+
+  useEffect(() => {
+    if (usuario.id !== 0) {
+      retornarLogin()
+    }
+  }, [usuario])
+
+  const handleSenha = (e: ChangeEvent<HTMLInputElement>) => {
+    setConfirmarSenha(e.target.value)
+  }
+
+  async function CadastroDeUsuario(e:ChangeEvent<HTMLFormElement>) {
+    e.preventDefault()
+    
+    setIsloading(true)
+    if (usuario.senha === confirmarSenha && usuario.senha.length >= 8) {
+      try {
+        await usuarioCadastrar("/usuarios/cadastrar", usuario, setUsuario)
+        ToastAlerta("Usuário cadastrado com sucesso!", 'success')
+        retornarLogin()
+      } catch (error: any) {
+        ToastAlerta("Erro ao cadastrar usuário", 'error')
+      } finally {
+        setIsloading(false)
+      }
+    } else {
+      ToastAlerta("Senhas inconsistentes ou menores que 8 caracteres", 'error')
+      setUsuario({ ...usuario, senha: '' })
+      setConfirmarSenha('')
+      setIsloading(false) 
+    }
+  }
+
+  return (
+    <div className="flex flex-col items-center py-30 px-4 md:px-0 justify-center min-h-screen">
+      <h2 className="font-bold text-center text-gray-800 max-w-100px mb-6 text-2xl leading-tight">Cadastre-se</h2>
+      
+      <form 
+        onSubmit={CadastroDeUsuario} 
+        className="bg-green-900/15 p-8 rounded-[30px] border border-green-800 w-full max-w-sm gap-7 flex flex-col shadow-lg"
+      >
+        
+        <div className="flex flex-col">
+          <label htmlFor="nome" className='text-[#0D542B] font-bold mb-1 ml-2'>Nome</label>
+          <input 
+            type="text" 
+            name="nome"
+            placeholder='Digite seu nome completo'
+            value={usuario.nome} 
+            className=' bg-white w-full h-10 rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
+            onChange={atualizarEstado}
+            required
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="tipo" className='text-[#0D542B] font-bold mb-1 ml-2'>Tipo</label>
+          <select   
+            name="tipo"
+            className='w-full bg-white h-10 rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B]'
+            value={usuario.tipo} 
+            onChange={atualizarEstado}
+            required
+          >
+            <option value="" disabled>Selecione</option>
+            <option value="cliente">Cliente</option>
+            <option value="empresa">Empresa</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="email" className='text-[#0D542B] font-bold mb-1 ml-2'>
+            Email
+          </label>
+          <input 
+            type="email" 
+            name="email"
+            placeholder='Digite seu email' 
+            className='w-full bg-white h-10 rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
+            value={usuario.email} 
+            onChange={atualizarEstado}
+            required
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="senha" className='text-[#0D542B] font-bold mb-1 ml-2'>Senha</label>
+          <input 
+            type="password" 
+            name="senha"
+            placeholder='Digite uma senha'
+            value={usuario.senha} 
+            className='w-full bg-white h-10 rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
+            onChange={atualizarEstado}
+            required
+          />
+        </div>
+
+        <div className="flex flex-col mb-2">
+          <label htmlFor="confirmarSenha" className='text-[#0D542B] font-bold mb-1 ml-2'>Confirmar Senha</label>
+          <input 
+            type="password" 
+            name="confirmarSenha"
+            placeholder='Confirme a senha digitada'
+            value={confirmarSenha} 
+            className='w-full h-10 bg-white rounded-full border border-green-800 px-4 outline-none focus:ring-2 focus:ring-[#0D542B]' 
+            onChange={handleSenha}
+            required
+          />
+        </div>
+
+        <button 
+          type="submit" 
+          className='bg-green-800 cursor-pointer text-white font-bold py-3 rounded-full hover:bg-green-900 transition-colors flex justify-center items-center'
+          disabled={isloading}
+        >
+          {isloading ? 'Cadastrando...' : 'Cadastrar'}
+        </button>
+      </form>
+      <p className="mt-4 text-black font-medium">
+        Já possui conta? <Link to="/login" className="text-[#0D542B] font-bold hover:underline">Entre aqui</Link>
+      </p>
+    </div>
+  )
+}
