@@ -1,31 +1,40 @@
 import { useState } from "react";
 import Logo from "./../../assets/icons/logoescrita-crm.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RiUser3Fill } from "react-icons/ri";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname, hash } = useLocation();
+   const navigate = useNavigate();
 
   const navLinks = [
     { label: "Início", href: "/", type: "path" },
     { label: "Sobre", href: "/sobre", type: "path" },
-    { label: "Pontos de Coleta", href: "#ponto-de-coleta", type: "hash" },
+    { label: "Pontos de Coleta", href: "//#ponto-de-coleta", type: "scroll" },
     { label: "Parceiros", href: "/parceria", type: "path" },
   ];
 
+const handleScrollLink = (e: React.MouseEvent, href: string) => {
+  e.preventDefault();
+  const sectionId = href.includes("#") ? href.split("#")[1] : href;
+
+  if (pathname === "/") {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+  } else {
+    navigate("/", { state: { scrollTo: sectionId } });
+  }
+  setMenuOpen(false);
+};
+  
   const isActive = (href: string, type: string) => {
     if (type === "hash") return hash === href;
     return pathname === href;
   };
 
   return (
-    <div className="fixed z-50 w-full top-0 left-0">
-      <div
-        className={`flex flex-row w-full justify-between items-center px-6 py-3 bg-green-900/15 backdrop-blur-sm border-l border-r border-b rounded-b-3xl border-green-800 text-gray-900 font-semibold shadow-sm transition-all duration-300 ${
-          menuOpen ? "rounded-b-none border-b-0" : ""
-        }`}
-      >
+        <div className="fixed z-50 w-full top-0 left-0">
+      <div className={`flex flex-row w-full justify-between items-center px-6 py-3 bg-green-900/15 backdrop-blur-sm border-l border-r border-b rounded-b-3xl border-green-800 text-gray-900 font-semibold shadow-sm transition-all duration-300 ${menuOpen ? "rounded-b-none border-b-0" : ""}`}>
         <Link to="/">
           <img src={Logo} alt="Logo" className="h-12" />
         </Link>
@@ -34,16 +43,26 @@ function Navbar() {
           <ul className="flex flex-row gap-10">
             {navLinks.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
-                  className={`transition-colors duration-200 ${
-                    isActive(link.href, link.type)
-                      ? "text-lime-600"
-                      : "hover:text-lime-600"
-                  }`}
-                >
-                  {link.label}
-                </a>
+                {link.type === "scroll" ? (
+                  
+                    <a href={link.href}
+                    onClick={(e) => handleScrollLink(e, link.href)}
+                    className={`transition-colors duration-200 ${
+                      isActive(link.href, link.type) ? "text-lime-600" : "hover:text-lime-600"
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className={`transition-colors duration-200 ${
+                      isActive(link.href, link.type) ? "text-lime-600" : "hover:text-lime-600"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
@@ -87,19 +106,33 @@ function Navbar() {
         <nav className="bg-green-900/15 backdrop-blur-sm border-l border-r border-b rounded-b-3xl border-green-800 shadow-sm px-6 py-4">
           <ul className="flex flex-col gap-5">
             {navLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  className={`block font-semibold transition-colors duration-200 py-1 ${
-                    isActive(link.href, link.type)
-                      ? "text-lime-600"
-                      : "text-gray-900 hover:text-lime-600"
-                  }`}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              </li>
+            <li key={link.label}>
+  {link.type === "scroll" ? (
+    
+      <a href={link.href}
+      className={`block font-semibold transition-colors duration-200 py-1 ${
+        isActive(link.href, link.type)
+          ? "text-lime-600"
+          : "text-gray-900 hover:text-lime-600"
+      }`}
+      onClick={(e) => handleScrollLink(e, link.href)}
+    >
+      {link.label}
+    </a>
+  ) : (
+    <Link
+      to={link.href}
+      className={`block font-semibold transition-colors duration-200 py-1 ${
+        isActive(link.href, link.type)
+          ? "text-lime-600"
+          : "text-gray-900 hover:text-lime-600"
+      }`}
+      onClick={() => setMenuOpen(false)}
+    >
+      {link.label}
+    </Link>
+  )}
+</li>
             ))}
           </ul>
         </nav>

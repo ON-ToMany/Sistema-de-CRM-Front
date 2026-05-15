@@ -1,7 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../assets/icons/logo-greentech.png";
 
-const Footer = () => (
+
+const Footer = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleScrollLink = (e: React.MouseEvent, path: string) => {
+    if (!path.includes("#")) return; 
+    e.preventDefault();
+    const sectionId = path.split("#")[1];
+
+    if (pathname === "/") {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/", { state: { scrollTo: sectionId } });
+    }
+  };
+
+  return (
   <footer className="bg-green-900/15 text-gray-700 pt-12 pb-6 px-6">
     <div className="max-w-6xl mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-10 mb-10">
@@ -9,11 +26,10 @@ const Footer = () => (
           <img src={logo} alt="Greentech CRM" className="h-12 object-contain" />
           <div className="leading-tight">
             <p className="font-bold text-lg text-gray-900">Greentech</p>
-            <p className=" font-medium text-sm text-gray-500">CRM</p>
+            <p className="font-medium text-sm text-gray-500">CRM</p>
           </div>
         </div>
 
-        {/* LINKS */}
         <div>
           <h4 className="font-bold text-sm mb-4 text-green-900 uppercase tracking-wider">
             NAVEGAÇÃO
@@ -21,15 +37,15 @@ const Footer = () => (
           <ul className="grid grid-cols-3 gap-2.5 text-center md:grid-cols-1 md:text-left">
             {[
               { label: "Início", path: "/" },
-              { label: "Sobre", path: "/#sobre" },
-              { label: "Pontos de Coleta", path: "/#coleta" },
+              { label: "Sobre", path: "/sobre" },
+              { label: "Pontos de Coleta", path: "/#ponto-de-coleta" },
               { label: "Parceiros", path: "/parceria" },
-              { label: "Rastreie", path: "/#rastreamento" },
-              { label: "Gerencie", path: "/#gerenciamento" },
+              { label: "Área do cliente", path: "/Login" },
             ].map((item) => (
               <li key={item.path}>
                 <Link
                   to={item.path}
+                  onClick={(e) => handleScrollLink(e, item.path)}
                   className="text-gray-950 hover:text-lime-600 text-sm transition-colors"
                 >
                   {item.label}
@@ -74,5 +90,6 @@ const Footer = () => (
     </div>
   </footer>
 );
+}
 
 export default Footer;

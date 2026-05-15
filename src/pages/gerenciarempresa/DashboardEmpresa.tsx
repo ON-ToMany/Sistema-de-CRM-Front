@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import Tabela from './components/tabela/Tabela';
-import iconeCO2 from "../../assets/simbolo CO2.png.png";
-import iconeRecicle from "../../assets/simbolo recicle.png";
+import iconeCO2 from "../../assets//icons/simbolo CO2.png.png";
+import iconeRecicle from "../../assets/icons/simbolo recicle.png";
 
 const DashboardEmpresa: FC = () => {
 
