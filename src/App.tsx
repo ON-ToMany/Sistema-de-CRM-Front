@@ -12,32 +12,34 @@ import DashboardLayout from "./components/layouts/layoutdashboard/LayoutDashboar
 import CadastrarOportunidade from "./pages/dashboard/CadastrarOportunidade";
 import GerenciarOportunidades from "./pages/dashboard/GerenciarOportunidades";
 import Historico from "./pages/dashboard/Historico";
+import RecuperarSenha from "./components/recuperarsenha/RecuperarSenha";
 
 function App() {
   return (
     <AuthProvider>
-      <ToastContainer/>
+      <ToastContainer />
       <BrowserRouter>
         <Routes>
           <Route element={<PublicLayout />}>
-          <Route path="/" element={<Home/>} />
-          <Route path="/inicio" element={<Home/>} />
-          <Route path="/Parceria" element={<Parceria/>} />
-          <Route path="/Sobre" element={<Quemsomos/>} />
-          <Route path="/Login" element={<LoginUsuario/>} />
-          <Route path="/cadastrar" element={<CadastrarUsuario/>} />
-        </Route>
+            <Route path="/" element={<Home/>} />
+            <Route path="/inicio" element={<Home/>} />
+            <Route path="/Parceria" element={<Parceria/>} />
+            <Route path="/Sobre" element={<Quemsomos/>} />
+            <Route path="/Login" element={<LoginUsuario/>} />
+            <Route path="/cadastrar" element={<CadastrarUsuario/>} />
+            <Route path="/recuperar-senha" element={<RecuperarSenha />} />
+          </Route>
 
-        <Route element={<DashboardLayout />}>
-          <Route path="/dashboard" element={<Dashboard/>}/>
-          <Route path="/gerenciar-oportunidades" element={<GerenciarOportunidades />} />
-          <Route path="/cadastrar-oportunidade" element={<CadastrarOportunidade />} />
-          <Route path="/historico-oportunidades" element={<Historico />} />
-        </Route>
+          <Route element={<DashboardLayout />}>
+            <Route path="/dashboard" element={<Dashboard/>}/>
+            <Route path="/gerenciar-oportunidades" element={<GerenciarOportunidades />} />
+            <Route path="/cadastrar-oportunidade" element={<CadastrarOportunidade />} />
+            <Route path="/historico-oportunidades" element={<Historico />} />
+          </Route>
         </Routes> 
       </BrowserRouter>
     </AuthProvider>
-  )
+  );
 }
 
 export default App;
